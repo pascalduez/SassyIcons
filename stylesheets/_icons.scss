@@ -1,0 +1,206 @@
+//
+// Sassy icons.
+//
+// SVG first with PNG sprite fallback
+// or PNG first with hidpi 2x sprite support.
+//
+
+// @TODO: documentation.
+
+@import "SassyLists";
+@import "functions";
+@import "generated";
+
+
+// A bit of terminology first.
+// sprite = a single image/icon
+// "sprite sheet" or "sprite map" = all sprites combined together
+
+
+// Config
+$icons-spacing   : 30px !default;
+$icons-dir       : "icons" !default;
+$icons-dir-png   : "png" !default;
+$icons-dir-hidpi : "png_2x" !default;
+$mq-hidpi: "(min-resolution: 1.5dppx), (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (min-resolution: 144dpi)";
+
+// Storage
+$icons-maps: ();
+
+
+
+//
+// Helper: retreive a sprite map.
+//
+@function _sprite-map-get($name, $factor: 1x) {
+  @return map-get(map-get($icons-maps, $name), $factor);
+}
+
+
+
+//
+// Helper: return correct sprites-map `background-position`.
+//
+@function _sprite-position($map, $sprite, $offset-x: 0, $offset-y: 0, $multiplier: 1) {
+  $pos: sprite-position($map, $sprite, $offset-x * $multiplier, $offset-y * $multiplier);
+  @return (nth($pos, 1) nth($pos, 2) / $multiplier);
+}
+
+
+
+//
+// Create a new sprite map from folder.
+//
+@mixin sprite-map-create($name) {
+
+  $sprites-1x: to-string(($icons-dir, $name, $icons-dir-png, "*.png"), "/");
+  $sprites-2x: to-string(($icons-dir, $name, $icons-dir-hidpi, "*.png"), "/");
+
+  $map-1x: sprite-map($sprites-1x, $spacing: $icons-spacing);
+  $map-2x: sprite-map($sprites-2x, $spacing: $icons-spacing);
+
+  $icons-maps: map-set($icons-maps, $name, (1x: $map-1x, 2x: $map-2x)) !global;
+
+  @at-root %sprite-map-#{$name}-image-map {
+    background: {
+      image: $map-1x;
+      repeat: no-repeat;
+    }
+  }
+  @at-root %sprite-map-#{$name}-2x-image-map {
+    @media #{$mq-hidpi} {
+      background: {
+        image: $map-2x;
+        size: ceil(image-width(sprite-path($map-2x)) / 2) auto;
+      }
+    }
+  }
+}
+
+
+
+//
+// Main icon mixin.
+//
+@mixin icon($name, $sprite, $offset: 0 0, $type: "svg") {
+
+  $map-1x: _sprite-map-get($name);
+  $map-2x: _sprite-map-get($name, 2x);
+
+  // Shorter mixin calls.
+  $offset-x: nth($offset, 1);
+  $offset-y: nth($offset, 2);
+
+  @if ($type == "svg") {
+
+    $svg-file: to-string(($icons-dir, $name, "#{$sprite}.svg"), "/");
+
+    background: {
+      image: inline-image($svg-file);
+      repeat: no-repeat;
+    }
+
+    .svg & {
+      @content;
+    }
+
+    .no-svg &,
+    .no-js & {
+
+      @extend %sprite-map-#{$name}-image-map;
+
+      background-position: _sprite-position($map-1x, $sprite, $offset-x, $offset-y);
+    }
+
+  }
+  @else if ($type == "png") {
+
+    @extend %sprite-map-#{$name}-image-map;
+
+    background-position: _sprite-position($map-1x, $sprite, $offset-x, $offset-y);
+
+    @extend %sprite-map-#{$name}-2x-image-map;
+
+    @media #{$mq-hidpi} {
+      background-position: _sprite-position($map-2x, $sprite, $offset-x, $offset-y, 2);
+    }
+  }
+}
+
+
+
+//
+// Embed a single icon as inline-image (no sprite).
+// Should be used very sporadically.
+//
+@mixin icon-single($name, $sprite, $type: "svg") {
+
+  // sprite-file() and inline-image() no work.
+  // @see https://github.com/chriseppstein/compass/issues/951
+
+  $svg-file: to-string(($icons-dir, $name, "#{$sprite}.svg"), "/");
+  $png-file-1x: to-string(($icons-dir, $name, $icons-dir-png, "#{$sprite}.png"), "/");
+  $png-file-2x: to-string(($icons-dir, $name, $icons-dir-hidpi, "#{$sprite}.png"), "/");
+
+  @if ($type == "svg") {
+
+    background: {
+      image: inline-image($svg-file);
+      repeat: no-repeat;
+    }
+
+    .svg & {
+      @content;
+    }
+
+    .no-svg &,
+    .no-js & {
+      background-image: inline-image($png-file-1x);
+    }
+
+  }
+  @else if ($type == "png") {
+
+    background: {
+      image: inline-image($png-file-1x);
+      repeat: no-repeat;
+    }
+
+    @media #{$mq-hidpi} {
+      background-image: inline-image($png-file-2x);
+    }
+  }
+}
+
+
+
+//
+// Include the icon in a generated "pseudo-element".
+// Default to :before
+// Allows for easier positioning or centering.
+//
+@mixin icon-generated($name, $sprite, $type: "svg", $pos: "before", $centered: false) {
+  position: relative;
+
+  &:#{$pos} {
+    $map-1x: _sprite-map-get($name);
+
+    $width: image-width(sprite-file($map-1x, $sprite));
+    $height: image-height(sprite-file($map-1x, $sprite));
+
+    @include generated($width, $height);
+
+    @if ($centered) {
+      top: 35%;
+      top: calc(50% - #{$height} / 2);
+      left: 35%;
+      left: calc(50% - #{$width} / 2);
+    }
+
+    @include icon($name: $name, $sprite: $sprite, $type: $type);
+
+    @content;
+  }
+}
+
+

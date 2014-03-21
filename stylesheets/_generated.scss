@@ -1,0 +1,21 @@
+
+//
+// Generated content.
+//
+@mixin generated($width: false, $height: false, $top: false, $right: false, $bottom: false, $left: false) {
+  //
+  //  Boilerplate styles for generated content .before :after
+  //
+  @if ($width) { width: $width };
+  @if ($height) { height: $height };
+  content: "";
+  display: block;
+  position: absolute;
+  @if($top) { top: $top; }
+  @if($right) { right: $right; }
+  @if($bottom) { bottom: $bottom; }
+  @if($left) { left: $left; }
+  z-index: 1;
+
+  @content;
+}

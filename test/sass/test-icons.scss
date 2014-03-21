@@ -1,0 +1,66 @@
+
+@import "../../stylesheets/icons";
+
+/*
+ * Test generated.
+ */
+.test-generated {
+  &:before {
+    @include generated(50px, 50px);
+  }
+  &:after {
+    @include generated(20px, 20px, $top: 0, $left: 0);
+  }
+}
+
+/*
+ * Test icons.
+ */
+.test-icons {
+
+  padding: 1em;
+  background: Chocolate;
+
+  li {
+    color: white;
+    list-style: none;
+    display: inline-block;
+    margin-right: 1em;
+
+    &:first-child {
+      min-width: 6em;
+    }
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+    display: block;
+  }
+
+  @include sprite-map-create(social);
+
+  @each $icon in ("facebook", "twitter", "googleplus", "xing", "linkedin") {
+
+    .icons--svg .#{$icon} {
+      @include icon(social, $icon);
+    }
+
+    .icons--png .#{$icon} {
+      @include icon(social, $icon, $type: "png");
+    }
+
+    .icons--single--svg .#{$icon} {
+      @include icon-single(social, $icon);
+    }
+    .icons--single--png .#{$icon} {
+      @include icon-single(social, $icon, $type: "png");
+    }
+
+    .icons--generated .#{$icon} {
+      @include icon-generated(social, $icon);
+    }
+
+  }
+
+}
