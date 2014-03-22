@@ -28,7 +28,7 @@
     margin-right: 1em;
 
     &:first-child {
-      min-width: 6em;
+      min-width: 8em;
     }
   }
 
@@ -59,6 +59,14 @@
 
     .icons--generated .#{$icon} {
       @include icon-generated(social, $icon);
+    }
+
+    .icons--generated--png .#{$icon} {
+      @include icon-generated(social, $icon, $type: "png");
+    }
+
+    .icons--generated--centered .#{$icon} {
+      @include icon-generated(social, $icon, $centered: true);
     }
 
   }
