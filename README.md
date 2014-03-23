@@ -1,8 +1,12 @@
 ## Sassy icons
 
 Flexible system to manipulate icons, SVG, PNG, sprites.  
-With fallback and hidpi support.  
+SVG first with PNG sprite fallback,  or PNG first with hidpi sprite support.  
 
 @TODO:
-- Documentation.
-- `icon-generated()` and `generated()` Don't force absolute positioning.
+* Documentation.
+* `icon-generated()` and `generated()` Don't force absolute positioning.
+
+## Requirements
+
+* Sass ~> 3.3.0
