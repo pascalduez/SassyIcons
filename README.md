@@ -1,7 +1,7 @@
-## Sassy icons
+## SassyIcons
 
-Flexible system to manipulate icons, SVG, PNG, sprites.  
-SVG first with PNG sprite fallback,  or PNG first with hidpi sprite support.  
+Flexible system to manipulate icons, SVG, PNG, sprites.
+SVG first with PNG sprite fallback, or PNG first with hidpi sprite support.
 
 @TODO:
 * Documentation.
