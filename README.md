@@ -9,4 +9,5 @@ SVG first with PNG sprite fallback, or PNG first with hidpi sprite support.
 
 ## Requirements
 
-* Sass ~> 3.3.0
+* Sass ~> 3.3.0 
+* Compass ~> 1.0.0.alpha.18 
