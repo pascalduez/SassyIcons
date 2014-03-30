@@ -10,4 +10,3 @@ gem 'compass', '1.0.0.alpha.18' # https://github.com/chriseppstein/compass/issue
 gem 'rb-fsevent', '~>0.9.4'
 gem 'css_parser', '~>1.3.5'
 gem 'oily_png', '~>1.1.1'
-gem 'SassyLists', '~>1.0.0'

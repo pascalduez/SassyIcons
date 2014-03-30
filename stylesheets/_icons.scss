@@ -7,7 +7,6 @@
 
 // @TODO: documentation.
 
-@import "SassyLists";
 @import "functions";
 @import "generated";
 
@@ -54,8 +53,8 @@ $icons-maps: ();
 //
 @mixin sprite-map-create($name) {
 
-  $sprites-1x: to-string(($icons-dir, $name, $icons-dir-png, "*.png"), "/");
-  $sprites-2x: to-string(($icons-dir, $name, $icons-dir-hidpi, "*.png"), "/");
+  $sprites-1x: join(($icons-dir, $name, $icons-dir-png, "*.png"), "/");
+  $sprites-2x: join(($icons-dir, $name, $icons-dir-hidpi, "*.png"), "/");
 
   $map-1x: sprite-map($sprites-1x, $spacing: $icons-spacing);
   $map-2x: sprite-map($sprites-2x, $spacing: $icons-spacing);
@@ -94,7 +93,7 @@ $icons-maps: ();
 
   @if ($type == "svg") {
 
-    $svg-file: to-string(($icons-dir, $name, "#{$sprite}.svg"), "/");
+    $svg-file: join(($icons-dir, $name, "#{$sprite}.svg"), "/");
 
     background: {
       image: inline-image($svg-file);
@@ -139,9 +138,9 @@ $icons-maps: ();
   // sprite-file() and inline-image() no work.
   // @see https://github.com/chriseppstein/compass/issues/951
 
-  $svg-file: to-string(($icons-dir, $name, "#{$sprite}.svg"), "/");
-  $png-file-1x: to-string(($icons-dir, $name, $icons-dir-png, "#{$sprite}.png"), "/");
-  $png-file-2x: to-string(($icons-dir, $name, $icons-dir-hidpi, "#{$sprite}.png"), "/");
+  $svg-file: join(($icons-dir, $name, "#{$sprite}.svg"), "/");
+  $png-file-1x: join(($icons-dir, $name, $icons-dir-png, "#{$sprite}.png"), "/");
+  $png-file-2x: join(($icons-dir, $name, $icons-dir-hidpi, "#{$sprite}.png"), "/");
 
   @if ($type == "svg") {
 
