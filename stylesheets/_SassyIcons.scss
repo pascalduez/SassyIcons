@@ -1,0 +1,26 @@
+// -------------------------------------------------------------------------------
+// SassyIcons - Flexible icons system.
+// -------------------------------------------------------------------------------
+// Repository: https://github.com/pascalduez/SassyIcons
+// -------------------------------------------------------------------------------
+
+//
+// Import configuration
+//
+@import "config/config";
+
+//
+// Import helpers
+//
+@import "helpers/helpers";
+
+
+//
+// Import icons
+//
+@import "icons/sprite-map-create";
+@import "icons/icon";
+@import "icons/icon-single";
+@import "icons/generated";
+@import "icons/icon-generated";
+

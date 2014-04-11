@@ -1,0 +1,66 @@
+
+// Push new entry to `$map`
+// --------------------------------------------------------------------------------
+// @param [map] $map
+// @param $key
+// @param $value
+// --------------------------------------------------------------------------------
+// @return [map]
+
+@function _map-set($map, $key, $value) {
+  @return map-merge($map, ($key: $value));
+}
+
+
+
+// Join `$list` into a string
+// --------------------------------------------------------------------------------
+// @param [list] $list
+// @param [string] $glue
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function _join($list, $glue: "") {
+  $result: "";
+
+  @if length($list) < 1 {
+    @return $result;
+  }
+
+  @for $i from 1 through length($list) {
+    $result: $result + nth($list, $i) + if($i != length($list), $glue, "");
+  }
+
+  @return $result;
+}
+
+
+
+// Helper: retreive a sprite map.
+// --------------------------------------------------------------------------------
+// @param [string] $name
+// @param [string] $factor
+// --------------------------------------------------------------------------------
+// @return [spritemap]
+
+@function _sprite-map-get($name, $factor: 1x) {
+  @return map-get(map-get($icons-maps, $name), $factor);
+}
+
+
+
+//
+// Helper: return correct sprites-map `background-position`.
+// --------------------------------------------------------------------------------
+// @param [spritemap] $map
+// @param [string] $sprite
+// @param [number] $offset-x
+// @param [number] $offset-y
+// @param [number] $scale
+// --------------------------------------------------------------------------------
+// @return [list]
+
+@function _sprite-position($map, $sprite, $offset-x: 0, $offset-y: 0, $scale: 1) {
+  $pos: sprite-position($map, $sprite, $offset-x * $scale, $offset-y * $scale);
+  @return (nth($pos, 1) nth($pos, 2) / $scale);
+}

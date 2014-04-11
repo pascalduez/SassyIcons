@@ -1,20 +1,11 @@
+/*! SassyIcons – v0.0.1 – 2014-04-11 */
 //
 // SassyIcons.
 //
-// SVG first with PNG sprite fallback
-// or PNG first with hidpi 2x sprite support.
-//
-
-// @TODO: documentation.
-
-@import "functions";
-@import "generated";
-
 
 // A bit of terminology first.
 // sprite = a single image/icon
 // "sprite sheet" or "sprite map" = all sprites combined together
-
 
 // Config
 $icons-spacing     : 30px !default;
@@ -24,14 +15,51 @@ $icons-dir-hidpi   : "png_2x" !default;
 $icons-hidpi-scale : 2 !default;
 $icons-hidpi-mq    : "(min-resolution: 1.5dppx), (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (min-resolution: 144dpi)" !default;
 
-// Storage
-$icons-maps: ();
+
+// Push new entry to `$map`
+// --------------------------------------------------------------------------------
+// @param [map] $map
+// @param $key
+// @param $value
+// --------------------------------------------------------------------------------
+// @return [map]
+
+@function _map-set($map, $key, $value) {
+  @return map-merge($map, ($key: $value));
+}
 
 
 
-//
+// Join `$list` into a string
+// --------------------------------------------------------------------------------
+// @param [list] $list
+// @param [string] $glue
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function _join($list, $glue: "") {
+  $result: "";
+
+  @if length($list) < 1 {
+    @return $result;
+  }
+
+  @for $i from 1 through length($list) {
+    $result: $result + nth($list, $i) + if($i != length($list), $glue, "");
+  }
+
+  @return $result;
+}
+
+
+
 // Helper: retreive a sprite map.
-//
+// --------------------------------------------------------------------------------
+// @param [string] $name
+// @param [string] $factor
+// --------------------------------------------------------------------------------
+// @return [spritemap]
+
 @function _sprite-map-get($name, $factor: 1x) {
   @return map-get(map-get($icons-maps, $name), $factor);
 }
@@ -40,26 +68,39 @@ $icons-maps: ();
 
 //
 // Helper: return correct sprites-map `background-position`.
-//
+// --------------------------------------------------------------------------------
+// @param [spritemap] $map
+// @param [string] $sprite
+// @param [number] $offset-x
+// @param [number] $offset-y
+// @param [number] $scale
+// --------------------------------------------------------------------------------
+// @return [list]
+
 @function _sprite-position($map, $sprite, $offset-x: 0, $offset-y: 0, $scale: 1) {
   $pos: sprite-position($map, $sprite, $offset-x * $scale, $offset-y * $scale);
   @return (nth($pos, 1) nth($pos, 2) / $scale);
 }
 
+//
+// SassyIcons.
+//
 
+// Storage
+$icons-maps: ();
 
 //
 // Create a new sprite map from folder.
 //
 @mixin sprite-map-create($name) {
 
-  $sprites-1x: join(($icons-dir, $name, $icons-dir-png, "*.png"), "/");
-  $sprites-2x: join(($icons-dir, $name, $icons-dir-hidpi, "*.png"), "/");
+  $sprites-1x: _join(($icons-dir, $name, $icons-dir-png, "*.png"), "/");
+  $sprites-2x: _join(($icons-dir, $name, $icons-dir-hidpi, "*.png"), "/");
 
   $map-1x: sprite-map($sprites-1x, $spacing: $icons-spacing);
   $map-2x: sprite-map($sprites-2x, $spacing: $icons-spacing);
 
-  $icons-maps: map-set($icons-maps, $name, (1x: $map-1x, 2x: $map-2x)) !global;
+  $icons-maps: _map-set($icons-maps, $name, (1x: $map-1x, 2x: $map-2x)) !global;
 
   @at-root %sprite-map-#{$name}-image-map {
     background: {
@@ -77,7 +118,9 @@ $icons-maps: ();
   }
 }
 
-
+//
+// SassyIcons.
+//
 
 //
 // Main icon mixin.
@@ -93,7 +136,7 @@ $icons-maps: ();
 
   @if ($type == "svg") {
 
-    $svg-file: join(($icons-dir, $name, "#{$sprite}.svg"), "/");
+    $svg-file: _join(($icons-dir, $name, "#{$sprite}.svg"), "/");
 
     background: {
       image: inline-image($svg-file);
@@ -127,7 +170,9 @@ $icons-maps: ();
   }
 }
 
-
+//
+// SassyIcons.
+//
 
 //
 // Embed a single icon as inline-image (no sprite).
@@ -138,9 +183,9 @@ $icons-maps: ();
   // sprite-file() and inline-image() no work.
   // @see https://github.com/chriseppstein/compass/issues/951
 
-  $svg-file: join(($icons-dir, $name, "#{$sprite}.svg"), "/");
-  $png-file-1x: join(($icons-dir, $name, $icons-dir-png, "#{$sprite}.png"), "/");
-  $png-file-2x: join(($icons-dir, $name, $icons-dir-hidpi, "#{$sprite}.png"), "/");
+  $svg-file: _join(($icons-dir, $name, "#{$sprite}.svg"), "/");
+  $png-file-1x: _join(($icons-dir, $name, $icons-dir-png, "#{$sprite}.png"), "/");
+  $png-file-2x: _join(($icons-dir, $name, $icons-dir-hidpi, "#{$sprite}.png"), "/");
 
   @if ($type == "svg") {
 
@@ -173,6 +218,30 @@ $icons-maps: ();
 }
 
 
+//
+// Generated content.
+//
+@mixin generated($width: false, $height: false, $top: false, $right: false, $bottom: false, $left: false) {
+  //
+  //  Boilerplate styles for generated content .before :after
+  //
+  @if ($width) { width: $width };
+  @if ($height) { height: $height };
+  content: "";
+  display: block;
+  position: absolute;
+  @if($top) { top: $top; }
+  @if($right) { right: $right; }
+  @if($bottom) { bottom: $bottom; }
+  @if($left) { left: $left; }
+  z-index: 1;
+
+  @content;
+}
+
+//
+// SassyIcons.
+//
 
 //
 // Include the icon in a generated "pseudo-element".
@@ -183,10 +252,11 @@ $icons-maps: ();
   position: relative;
 
   &:#{$pos} {
-    $map-1x: _sprite-map-get($name);
+    $sprite-file: sprite-file(_sprite-map-get($name), $sprite);
 
-    $width: image-width(sprite-file($map-1x, $sprite));
-    $height: image-height(sprite-file($map-1x, $sprite));
+    $width: image-width($sprite-file);
+    $height: image-height($sprite-file);
+
 
     @include generated($width, $height);
 
@@ -202,5 +272,3 @@ $icons-maps: ();
     @content;
   }
 }
-
-

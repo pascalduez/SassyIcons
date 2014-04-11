@@ -1,0 +1,35 @@
+//
+// SassyIcons.
+//
+
+// Storage
+$icons-maps: ();
+
+//
+// Create a new sprite map from folder.
+//
+@mixin sprite-map-create($name) {
+
+  $sprites-1x: _join(($icons-dir, $name, $icons-dir-png, "*.png"), "/");
+  $sprites-2x: _join(($icons-dir, $name, $icons-dir-hidpi, "*.png"), "/");
+
+  $map-1x: sprite-map($sprites-1x, $spacing: $icons-spacing);
+  $map-2x: sprite-map($sprites-2x, $spacing: $icons-spacing);
+
+  $icons-maps: _map-set($icons-maps, $name, (1x: $map-1x, 2x: $map-2x)) !global;
+
+  @at-root %sprite-map-#{$name}-image-map {
+    background: {
+      image: $map-1x;
+      repeat: no-repeat;
+    }
+  }
+  @at-root %sprite-map-#{$name}-2x-image-map {
+    @media #{$icons-hidpi-mq} {
+      background: {
+        image: $map-2x;
+        size: ceil(image-width(sprite-path($map-2x)) / $icons-hidpi-scale) auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+//
+// SassyIcons.
+//
+
+//
+// Embed a single icon as inline-image (no sprite).
+// Should be used very sporadically.
+//
+@mixin icon-single($name, $sprite, $type: "svg") {
+
+  // sprite-file() and inline-image() no work.
+  // @see https://github.com/chriseppstein/compass/issues/951
+
+  $svg-file: _join(($icons-dir, $name, "#{$sprite}.svg"), "/");
+  $png-file-1x: _join(($icons-dir, $name, $icons-dir-png, "#{$sprite}.png"), "/");
+  $png-file-2x: _join(($icons-dir, $name, $icons-dir-hidpi, "#{$sprite}.png"), "/");
+
+  @if ($type == "svg") {
+
+    background: {
+      image: inline-image($svg-file);
+      repeat: no-repeat;
+    }
+
+    .svg & {
+      @content;
+    }
+
+    .no-svg &,
+    .no-js & {
+      background-image: inline-image($png-file-1x);
+    }
+
+  }
+  @else if ($type == "png") {
+
+    background: {
+      image: inline-image($png-file-1x);
+      repeat: no-repeat;
+    }
+
+    @media #{$icons-hidpi-mq} {
+      background-image: inline-image($png-file-2x);
+    }
+  }
+}

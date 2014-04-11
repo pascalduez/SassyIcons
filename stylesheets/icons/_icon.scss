@@ -1,0 +1,51 @@
+//
+// SassyIcons.
+//
+
+//
+// Main icon mixin.
+//
+@mixin icon($name, $sprite, $offset: 0 0, $type: "svg") {
+
+  $map-1x: _sprite-map-get($name);
+  $map-2x: _sprite-map-get($name, 2x);
+
+  // Shorter mixin calls.
+  $offset-x: nth($offset, 1);
+  $offset-y: nth($offset, 2);
+
+  @if ($type == "svg") {
+
+    $svg-file: _join(($icons-dir, $name, "#{$sprite}.svg"), "/");
+
+    background: {
+      image: inline-image($svg-file);
+      repeat: no-repeat;
+    }
+
+    .svg & {
+      @content;
+    }
+
+    .no-svg &,
+    .no-js & {
+
+      @extend %sprite-map-#{$name}-image-map;
+
+      background-position: _sprite-position($map-1x, $sprite, $offset-x, $offset-y);
+    }
+
+  }
+  @else if ($type == "png") {
+
+    @extend %sprite-map-#{$name}-image-map;
+
+    background-position: _sprite-position($map-1x, $sprite, $offset-x, $offset-y);
+
+    @extend %sprite-map-#{$name}-2x-image-map;
+
+    @media #{$icons-hidpi-mq} {
+      background-position: _sprite-position($map-2x, $sprite, $offset-x, $offset-y, $icons-hidpi-scale);
+    }
+  }
+}

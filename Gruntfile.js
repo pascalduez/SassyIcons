@@ -6,12 +6,78 @@ module.exports = function(grunt) {
   // Load all grunt tasks matching the `grunt-*` pattern.
   require("load-grunt-tasks")(grunt);
 
+  // Time how long tasks take.
+  require("time-grunt")(grunt);
+
+  var config = {
+    name: "SassyIcons",
+    base: "./test",
+    scss: "./test/sass",
+    css: "./test/css",
+    img: "./test/img",
+    icons: "./test/img/icons",
+    src: "./stylesheets",
+    dist: "./dist"
+  }
+
   grunt.initConfig({
 
-    config: {
-      img: "test/img",
-      icons: "test/img/icons",
-      css: "test/css"
+    pkg: grunt.file.readJSON("package.json"),
+
+    conf: config,
+
+    sass: {
+      options: {
+        //trace: true,
+        bundleExec: true,
+        compass: true,
+        style: "expanded"
+      },
+      test: {
+        options: {
+          loadPath: ["<%= conf.src %>"]
+        },
+        files: [{
+          expand: true,
+          cwd: "<%= conf.scss %>",
+          src: ["*.scss"],
+          dest: "<%= conf.css %>",
+          ext: ".css"
+        }]
+      },
+      dist: {
+        options: {
+          loadPath: ["<%= conf.dist %>"]
+        },
+        files: [{
+          expand: true,
+          cwd: "<%= conf.scss %>",
+          src: ["*.scss"],
+          dest: "<%= conf.css %>",
+          ext: ".css"
+        }]
+      }
+    },
+
+    watch: {
+      test: {
+        files: ["<%= conf.scss %>/*.scss"],
+        tasks: ["sass:test"]
+      }
+    },
+
+    browserSync: {
+      test: {
+        bsFiles: {
+          src: "<%= conf.css %>/*.css"
+        },
+        options: {
+          watchTask: true,
+          server: {
+            baseDir: "<%= conf.base %>"
+          }
+        }
+      }
     },
 
     autoprefixer: {
@@ -21,9 +87,9 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: "<%= config.css %>",
+          cwd: "<%= conf.css %>",
           src: "{,*/}*.css",
-          dest: "<%= config.css %>"
+          dest: "<%= conf.css %>"
         }]
       }
     },
@@ -37,9 +103,9 @@ module.exports = function(grunt) {
       icons: {
         files: [{
           expand: true,
-          cwd: "<%= config.icons %>",
+          cwd: "<%= conf.icons %>",
           src: ["**/*.svg"],
-          dest: "<%= config.icons %>"
+          dest: "<%= conf.icons %>"
         }]
       }
     },
@@ -51,9 +117,9 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          cwd: "<%= config.icons %>",
+          cwd: "<%= conf.icons %>",
           src: ["**/*.svg"],
-          dest: "<%= config.icons %>"
+          dest: "<%= conf.icons %>"
         }]
       },
       retina: {
@@ -63,9 +129,9 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          cwd: "<%= config.icons %>",
+          cwd: "<%= conf.icons %>",
           src: ["**/*.svg"],
-          dest: "<%= config.icons %>"
+          dest: "<%= conf.icons %>"
         }]
       }
     },
@@ -74,16 +140,41 @@ module.exports = function(grunt) {
       icons: {
         files: [{
           expand: true,
-          cwd: "<%= config.icons %>",
+          cwd: "<%= conf.icons %>",
           src: ["**/png", "**/png_2x"]
         }]
       }
+    },
+
+    concat: {
+      options: {
+        banner: "/*! <%= conf.name %> – v<%= pkg.version %> – <%= grunt.template.today('yyyy-mm-dd') %> */\n",
+      },
+      dist: {
+        src: [
+          "<%= conf.src %>/config/_config.scss",
+          "<%= conf.src %>/helpers/_helpers.scss",
+          "<%= conf.src %>/icons/_sprite-map-create.scss",
+          "<%= conf.src %>/icons/_icon.scss",
+          "<%= conf.src %>/icons/_icon-single.scss",
+          "<%= conf.src %>/icons/_generated.scss",
+          "<%= conf.src %>/icons/_icon-generated.scss",
+        ],
+        dest: "<%= conf.dist %>/_<%= conf.name %>.scss",
+      },
     }
 
   });
 
-  grunt.registerTask("prefix", [
-    "autoprefixer"
+
+  grunt.registerTask("test", [
+    "browserSync:test",
+    "watch:test"
+  ]);
+
+  grunt.registerTask("dist", [
+    "concat:dist",
+    "sass:dist"
   ]);
 
   grunt.registerTask("icons_refresh", [
@@ -97,6 +188,10 @@ module.exports = function(grunt) {
     "newer:svgmin:icons",
     "newer:svg2png:fallback",
     "newer:svg2png:retina"
+  ]);
+
+  grunt.registerTask("prefix", [
+    "autoprefixer"
   ]);
 
 };

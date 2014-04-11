@@ -1,15 +1,16 @@
 {
   "name": "SassyIcons",
-  "description": "Flexible system to manipulate icons, SVG, PNG, sprites.",
+  "description": "Flexible icons system.",
   "version": "0.0.1",
-  "main": "stylesheets/_SassyIcons.scss",
+  "main": "dist/_SassyIcons.scss",
   "ignore": [
     "**/.*",
     "node_modules",
     "test",
     "Gemfile",
     "Gemfile.lock",
-    "*.gemspec"
+    "sache.json",
+    "Gruntfile.js"
   ],
   "dependencies": {}
 }

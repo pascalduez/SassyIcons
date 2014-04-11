@@ -1,0 +1,33 @@
+//
+// SassyIcons.
+//
+
+//
+// Include the icon in a generated "pseudo-element".
+// Default to :before
+// Allows for easier positioning or centering.
+//
+@mixin icon-generated($name, $sprite, $type: "svg", $pos: "before", $centered: false) {
+  position: relative;
+
+  &:#{$pos} {
+    $sprite-file: sprite-file(_sprite-map-get($name), $sprite);
+
+    $width: image-width($sprite-file);
+    $height: image-height($sprite-file);
+
+
+    @include generated($width, $height);
+
+    @if ($centered) {
+      top: 35%;
+      top: calc(50% - #{$height} / 2);
+      left: 35%;
+      left: calc(50% - #{$width} / 2);
+    }
+
+    @include icon($name: $name, $sprite: $sprite, $type: $type);
+
+    @content;
+  }
+}
