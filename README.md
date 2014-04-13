@@ -1,14 +1,32 @@
 # SassyIcons
 
-Flexible system to manipulate icons, SVG, PNG, sprites.  
+Flexible system to manipulate icons, SVG, PNG, sprites. On top of compass sprite tools.  
 SVG first with PNG sprite fallback, or PNG first with hidpi sprite support.  
 
-## Icons mixins
+## Mixins
 
-`sprite-map-create()`  
-`icon()`  
-`icon-single()`  
-`icon-generated()`  
+`sprite-map-create($name)`  
+`icon($name, $sprite [, $offset, $type])`  
+`icon-single($name, $sprite [, $type])`  
+`icon-generated($name, $sprite [, $type, $pos, $centered])`
+
+## Documentation
+
+**sprite-map-create($name)**  
+Create a new sprite map from folder.  
+
+**icon($name, $sprite [, $offset, $type])**  
+Main icon mixin.  
+
+**icon-single($name, $sprite [, $type])**
+Embed a single icon as inline-image (no sprite).  
+Should be used sporadically.  
+
+**icon-generated($name, $sprite [, $type, $pos, $centered])**  
+Include the icon in a generated "pseudo-element". Default to :before.  
+Allows for easier positioning or centering.  
+
+Best workflow used in conjunction with [grunt-svg2png](https://github.com/pascalduez/grunt-svg2png)
 
 ## Requirements
 
@@ -39,7 +57,7 @@ npm install sassyicons --save
 
 ## Roadmap
 
-* Documentation
+* More documentation
 * `icon-generated()` and `generated()` Don't force absolute positioning.
 * Helper mixin to work with `background-size`
 * Abstract and move away from compass sprites ?
