@@ -40,7 +40,10 @@
     }
 
     @media #{$icons-hidpi-mq} {
-      background-image: inline-image($png-file-2x);
+      background: {
+        image: inline-image($png-file-2x);
+        size: ceil(image-width($png-file-2x) / $icons-hidpi-scale) auto;
+      }
     }
   }
 }

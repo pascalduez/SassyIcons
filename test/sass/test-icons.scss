@@ -38,6 +38,11 @@
     display: block;
   }
 
+  .icons--png--offset a {
+    border: 1px solid white;
+  }
+
+
   @include sprite-map-create(social);
 
   @each $icon in ("facebook", "twitter", "googleplus", "xing", "linkedin") {
@@ -48,6 +53,10 @@
 
     .icons--png .#{$icon} {
       @include icon(social, $icon, $type: "png");
+    }
+
+    .icons--png--offset .#{$icon} {
+      @include icon(social, $icon, $type: "png", $offset: 15px 15px);
     }
 
     .icons--single--svg .#{$icon} {

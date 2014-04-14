@@ -1,7 +1,9 @@
 # SassyIcons
 
-Flexible system to manipulate icons, SVG, PNG, sprites. On top of compass sprite tools.  
-SVG first with PNG sprite fallback, or PNG first with hidpi sprite support.  
+Flexible system to manipulate icons, SVG, PNG, sprites.  
+
+Works on top of compass sprite tools.  
+SVG first with PNG sprite fallback, or PNG first with hidpi sprite support.   
 
 ## Mixins
 
