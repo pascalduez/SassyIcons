@@ -1,7 +1,7 @@
 {
   "name": "SassyIcons",
   "description": "Flexible icons system.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "dist/_SassyIcons.scss",
   "ignore": [
     "**/.*",

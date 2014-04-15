@@ -3,7 +3,7 @@
 Flexible system to manipulate icons, SVG, PNG, sprites.  
 
 Works on top of compass sprite tools.  
-SVG first with PNG sprite fallback, or PNG first with hidpi sprite support.   
+SVG first with PNG sprite fallback, or PNG first with hidpi sprite support.
 
 ## Mixins
 
@@ -20,7 +20,7 @@ Create a new sprite map from folder.
 **icon($name, $sprite [, $offset, $type])**  
 Main icon mixin.  
 
-**icon-single($name, $sprite [, $type])**
+**icon-single($name, $sprite [, $type])**  
 Embed a single icon as inline-image (no sprite).  
 Should be used sporadically.  
 
@@ -55,6 +55,18 @@ bower install SassyIcons --save
 
 ```
 npm install sassyicons --save
+```
+
+#### Example config with [grunt-contrib-sass](https://github.com/gruntjs/grunt-contrib-compass)
+
+```js
+sass: {
+  options: {
+    bundleExec: true, // Optional usage of Bundler, but recommended.
+    compass: true,
+    loadPath: ["./node_modules/sassyicons/dist/_SassyIcons.scss"]
+  }
+}
 ```
 
 ## Roadmap
