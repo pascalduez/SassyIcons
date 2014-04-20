@@ -37,18 +37,10 @@ Best workflow used in conjunction with [grunt-svg2png](https://github.com/pascal
 
 ## Install
 
-Work in progress...  
-
 #### Git
 
 ```
 git clone git@github.com:pascalduez/SassyIcons.git && cd SassyIcons
-```
-
-#### Bower
-
-```
-bower install SassyIcons --save
 ```
 
 #### npm
