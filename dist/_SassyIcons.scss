@@ -1,19 +1,27 @@
-/*! SassyIcons – v0.0.3 – 2014-04-15 */
+/*! SassyIcons – v0.0.4 – 2014-04-23 */
 //
-// SassyIcons.
+// SassyIcons
 //
 
-// A bit of terminology first.
-// sprite = a single image/icon
-// "sprite sheet" or "sprite map" = all sprites combined together
+// Configuration
 
-// Config
-$icons-spacing     : 30px !default;
-$icons-dir         : "icons" !default;
-$icons-dir-png     : "png" !default;
-$icons-dir-hidpi   : "png_2x" !default;
-$icons-hidpi-scale : 2 !default;
-$icons-hidpi-mq    : "(min-resolution: 1.5dppx), (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (min-resolution: 144dpi)" !default;
+// Default settings.
+$icons-defaults: (
+  spacing     : 30px,
+  dir         : "icons",
+  dir-png     : "png",
+  dir-hidpi   : "png_2x",
+  hidpi-scale : 2,
+  hidpi-ratio : 1.3
+);
+
+// User settings.
+$icons: () !default;
+
+// Retreive a config item.
+@function defaults($key) {
+  @return map-get(map-merge($icons-defaults, $icons), $key);
+}
 
 
 // Push new entry to `$map`
@@ -82,8 +90,29 @@ $icons-hidpi-mq    : "(min-resolution: 1.5dppx), (-webkit-min-device-pixel-ratio
   @return (nth($pos, 1) nth($pos, 2) / $scale);
 }
 
+
+
 //
-// SassyIcons.
+// Hidpi media query builder.
+// --------------------------------------------------------------------------------
+// http://bjango.com/articles/min-device-pixel-ratio
+// http://www.brettjankord.com/2012/11/28/cross-browser-retinahigh-resolution-media-queries
+// http://www.w3.org/blog/CSS/2012/06/14/unprefix-webkit-device-pixel-ratio
+// --------------------------------------------------------------------------------
+
+@mixin hidpi-mq() {
+  $hidpi-ratio: defaults(hidpi-ratio);
+
+  @media (-webkit-min-device-pixel-ratio: $hidpi-ratio),
+         (min-resolution: $hidpi-ratio * 96dpi),
+         (min-resolution: $hidpi-ratio * 1dppx)
+  {
+    @content;
+  }
+}
+
+//
+// SassyIcons
 //
 
 // Storage
@@ -94,11 +123,11 @@ $icons-maps: ();
 //
 @mixin sprite-map-create($name) {
 
-  $sprites-1x: _join(($icons-dir, $name, $icons-dir-png, "*.png"), "/");
-  $sprites-2x: _join(($icons-dir, $name, $icons-dir-hidpi, "*.png"), "/");
+  $sprites-1x: _join((defaults(dir), $name, defaults(dir-png), "*.png"), "/");
+  $sprites-2x: _join((defaults(dir), $name, defaults(dir-hidpi), "*.png"), "/");
 
-  $map-1x: sprite-map($sprites-1x, $spacing: $icons-spacing);
-  $map-2x: sprite-map($sprites-2x, $spacing: $icons-spacing);
+  $map-1x: sprite-map($sprites-1x, $spacing: defaults(spacing));
+  $map-2x: sprite-map($sprites-2x, $spacing: defaults(spacing));
 
   $icons-maps: _map-set($icons-maps, $name, (1x: $map-1x, 2x: $map-2x)) !global;
 
@@ -109,17 +138,17 @@ $icons-maps: ();
     }
   }
   @at-root %sprite-map-#{$name}-2x-image-map {
-    @media #{$icons-hidpi-mq} {
+    @include hidpi-mq {
       background: {
         image: $map-2x;
-        size: ceil(image-width(sprite-path($map-2x)) / $icons-hidpi-scale) auto;
+        size: ceil(image-width(sprite-path($map-2x)) / defaults(hidpi-scale)) auto;
       }
     }
   }
 }
 
 //
-// SassyIcons.
+// SassyIcons
 //
 
 //
@@ -136,7 +165,7 @@ $icons-maps: ();
 
   @if ($type == "svg") {
 
-    $svg-file: _join(($icons-dir, $name, "#{$sprite}.svg"), "/");
+    $svg-file: _join((defaults(dir), $name, "#{$sprite}.svg"), "/");
 
     background: {
       image: inline-image($svg-file);
@@ -164,14 +193,14 @@ $icons-maps: ();
 
     @extend %sprite-map-#{$name}-2x-image-map;
 
-    @media #{$icons-hidpi-mq} {
-      background-position: _sprite-position($map-2x, $sprite, $offset-x, $offset-y, $icons-hidpi-scale);
+    @include hidpi-mq {
+      background-position: _sprite-position($map-2x, $sprite, $offset-x, $offset-y, defaults(hidpi-scale));
     }
   }
 }
 
 //
-// SassyIcons.
+// SassyIcons
 //
 
 //
@@ -183,9 +212,9 @@ $icons-maps: ();
   // sprite-file() and inline-image() no work.
   // @see https://github.com/chriseppstein/compass/issues/951
 
-  $svg-file: _join(($icons-dir, $name, "#{$sprite}.svg"), "/");
-  $png-file-1x: _join(($icons-dir, $name, $icons-dir-png, "#{$sprite}.png"), "/");
-  $png-file-2x: _join(($icons-dir, $name, $icons-dir-hidpi, "#{$sprite}.png"), "/");
+  $svg-file: _join((defaults(dir), $name, "#{$sprite}.svg"), "/");
+  $png-file-1x: _join((defaults(dir), $name, defaults(dir-png), "#{$sprite}.png"), "/");
+  $png-file-2x: _join((defaults(dir), $name, defaults(dir-hidpi), "#{$sprite}.png"), "/");
 
   @if ($type == "svg") {
 
@@ -211,10 +240,10 @@ $icons-maps: ();
       repeat: no-repeat;
     }
 
-    @media #{$icons-hidpi-mq} {
+    @include hidpi-mq {
       background: {
         image: inline-image($png-file-2x);
-        size: ceil(image-width($png-file-2x) / $icons-hidpi-scale) auto;
+        size: ceil(image-width($png-file-2x) / defaults(hidpi-scale)) auto;
       }
     }
   }
@@ -243,7 +272,7 @@ $icons-maps: ();
 }
 
 //
-// SassyIcons.
+// SassyIcons
 //
 
 //
@@ -259,7 +288,6 @@ $icons-maps: ();
 
     $width: image-width($sprite-file);
     $height: image-height($sprite-file);
-
 
     @include generated($width, $height);
 
