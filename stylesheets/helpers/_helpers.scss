@@ -64,3 +64,24 @@
   $pos: sprite-position($map, $sprite, $offset-x, $offset-y * $scale);
   @return (nth($pos, 1) nth($pos, 2) / $scale);
 }
+
+
+
+//
+// Hidpi media query builder.
+// --------------------------------------------------------------------------------
+// http://bjango.com/articles/min-device-pixel-ratio
+// http://www.brettjankord.com/2012/11/28/cross-browser-retinahigh-resolution-media-queries
+// http://www.w3.org/blog/CSS/2012/06/14/unprefix-webkit-device-pixel-ratio
+// --------------------------------------------------------------------------------
+
+@mixin hidpi-mq() {
+  $hidpi-ratio: defaults(hidpi-ratio);
+
+  @media (-webkit-min-device-pixel-ratio: $hidpi-ratio),
+         (min-resolution: $hidpi-ratio * 96dpi),
+         (min-resolution: $hidpi-ratio * 1dppx)
+  {
+    @content;
+  }
+}

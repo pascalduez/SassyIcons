@@ -1,5 +1,5 @@
 //
-// SassyIcons.
+// SassyIcons
 //
 
 //
@@ -16,7 +16,7 @@
 
   @if ($type == "svg") {
 
-    $svg-file: _join(($icons-dir, $name, "#{$sprite}.svg"), "/");
+    $svg-file: _join((defaults(dir), $name, "#{$sprite}.svg"), "/");
 
     background: {
       image: inline-image($svg-file);
@@ -44,8 +44,8 @@
 
     @extend %sprite-map-#{$name}-2x-image-map;
 
-    @media #{$icons-hidpi-mq} {
-      background-position: _sprite-position($map-2x, $sprite, $offset-x, $offset-y, $icons-hidpi-scale);
+    @include hidpi-mq {
+      background-position: _sprite-position($map-2x, $sprite, $offset-x, $offset-y, defaults(hidpi-scale));
     }
   }
 }

@@ -1,5 +1,5 @@
 //
-// SassyIcons.
+// SassyIcons
 //
 
 //
@@ -15,7 +15,6 @@
 
     $width: image-width($sprite-file);
     $height: image-height($sprite-file);
-
 
     @include generated($width, $height);
 
