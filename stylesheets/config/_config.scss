@@ -15,9 +15,16 @@ $icons-defaults: (
 );
 
 // User settings.
-$icons: () !default;
+$icons-settings: () !default;
 
-// Retreive a config item.
-@function defaults($key) {
-  @return map-get(map-merge($icons-defaults, $icons), $key);
+// Retreive a configuration item.
+@function conf($key) {
+  $config: map-merge($icons-defaults, $icons-settings);
+
+  @if not map-has-key($config, $key) {
+    @warn "No item `#{$key}` found in configuration.";
+    @return false;
+  }
+
+  @return map-get($config, $key);
 }

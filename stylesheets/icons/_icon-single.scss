@@ -11,9 +11,9 @@
   // sprite-file() and inline-image() no work.
   // @see https://github.com/chriseppstein/compass/issues/951
 
-  $svg-file: _join((defaults(dir), $name, "#{$sprite}.svg"), "/");
-  $png-file-1x: _join((defaults(dir), $name, defaults(dir-png), "#{$sprite}.png"), "/");
-  $png-file-2x: _join((defaults(dir), $name, defaults(dir-hidpi), "#{$sprite}.png"), "/");
+  $svg-file: _join((conf(dir), $name, "#{$sprite}.svg"), "/");
+  $png-file-1x: _join((conf(dir), $name, conf(dir-png), "#{$sprite}.png"), "/");
+  $png-file-2x: _join((conf(dir), $name, conf(dir-hidpi), "#{$sprite}.png"), "/");
 
   @if ($type == "svg") {
 
@@ -42,7 +42,7 @@
     @include hidpi-mq {
       background: {
         image: inline-image($png-file-2x);
-        size: ceil(image-width($png-file-2x) / defaults(hidpi-scale)) auto;
+        size: ceil(image-width($png-file-2x) / conf(hidpi-scale)) auto;
       }
     }
   }
