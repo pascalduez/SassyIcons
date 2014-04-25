@@ -81,7 +81,6 @@ sass: {
 
   1. Fork this repository
   2. Run `npm install`
-  4. Make your changes + write tests
-  3. `grunt test`
-  3. `grunt dist`
+  3. Make your changes + write tests
+  4. `grunt test`
   5. Commit + Pull request
