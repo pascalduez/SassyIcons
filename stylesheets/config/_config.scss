@@ -11,7 +11,8 @@ $icons-defaults: (
   dir-png     : "png",
   dir-hidpi   : "png_2x",
   hidpi-scale : 2,
-  hidpi-ratio : 1.3
+  hidpi-ratio : 1.3,
+  single-embed: true
 );
 
 // User settings.
@@ -19,12 +20,10 @@ $icons-settings: () !default;
 
 // Retreive a configuration item.
 @function conf($key) {
-  $config: map-merge($icons-defaults, $icons-settings);
-
-  @if not map-has-key($config, $key) {
+  @if not map-has-key($icons-defaults, $key) {
     @warn "No item `#{$key}` found in configuration.";
     @return false;
   }
 
-  @return map-get($config, $key);
+  @return map-get(map-merge($icons-defaults, $icons-settings), $key);
 }
