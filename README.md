@@ -3,7 +3,8 @@
 Flexible system to manipulate icons, SVG, PNG, sprites.  
 
 Works on top of compass sprite tools.  
-SVG first with PNG sprite fallback, or PNG first with hidpi sprite support.
+It was designed to easily switch between SVG and PNG while working with icons as background-images.  
+SVG first with PNG sprite fallback, or PNG first with hidpi sprite support.  
 
 ## Mixins
 
@@ -28,7 +29,24 @@ Should be used sporadically.
 Include the icon in a generated "pseudo-element". Default to :before.  
 Allows for easier positioning or centering.  
 
-Best workflow used in conjunction with [grunt-svg2png](https://github.com/pascalduez/grunt-svg2png)
+*Best workflow used in conjunction with [grunt-svg2png](https://github.com/pascalduez/grunt-svg2png)*
+
+## Configuration
+
+```scss
+// Default settings.
+$icons-defaults: (
+  spacing      : 30px,     // Space around sprites in generated sprite map.
+  dir          : "icons",  // Main icons directory. sprite-map-create() allows to use sub dirs.
+  dir-png      : "png",    // Name of the png sub-folders.
+  dir-hidpi    : "png_2x", // Name of the hidpi png sub-folders.
+  hidpi-scale  : 2,        // Scale of the hidpi pngs.
+  hidpi-ratio  : 1.3,      // Minimum resolution ratio used in the hidpi media query.
+  single-embed : true      // Whether to embed icons as data URI in the icon-single() mixin.
+);
+```
+Override default values in a new `$icons-settings` map.
+
 
 ## Requirements
 
