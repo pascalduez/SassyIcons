@@ -67,7 +67,7 @@ git clone git@github.com:pascalduez/SassyIcons.git && cd SassyIcons
 npm install sassyicons --save
 ```
 
-#### Example config with [grunt-contrib-sass](https://github.com/gruntjs/grunt-contrib-compass)
+#### Example config with [grunt-contrib-sass](https://github.com/gruntjs/grunt-contrib-sass)
 
 ```js
 sass: {
