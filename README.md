@@ -84,6 +84,7 @@ sass: {
 * More documentation
 * `icon-generated()` and `generated()` Don't force absolute positioning.
 * Rewrite `generated()` mixin
+* `icon-generated()` configurable `calc()` fallback
 * Helper mixin to work with `background-size`
 * Support for SVG sprites ?
 * Support for SVG stacks ?
