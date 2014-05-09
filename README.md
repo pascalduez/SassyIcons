@@ -83,7 +83,12 @@ sass: {
 
 * More documentation
 * `icon-generated()` and `generated()` Don't force absolute positioning.
+* Rewrite `generated()` mixin
 * Helper mixin to work with `background-size`
+* Support for SVG sprites ?
+* Support for SVG stacks ?
+* Try to further improve output CSS
+* More control over print position in the stylesheet ?
 * Abstract and move away from compass sprites ?
 
 ## Development
