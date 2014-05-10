@@ -11,14 +11,15 @@
   // sprite-file() and inline-image() no work.
   // @see https://github.com/chriseppstein/compass/issues/951
 
-  $svg-file: _join((conf(dir), $name, "#{$sprite}.svg"), "/");
-  $png-file-1x: _join((conf(dir), $name, conf(dir-png), "#{$sprite}.png"), "/");
-  $png-file-2x: _join((conf(dir), $name, conf(dir-hidpi), "#{$sprite}.png"), "/");
+  $dir: conf(dir);
+  $svg-file: _join(($dir, $name, "#{$sprite}.svg"), "/");
+  $png-file-1x: _join(($dir, $name, conf(dir-png), "#{$sprite}.png"), "/");
+  $png-file-2x: _join(($dir, $name, conf(dir-hidpi), "#{$sprite}.png"), "/");
 
-  $embed: conf(single-embed);
-  $svg-url: if($embed, inline-image($svg-file), image-url($svg-file));
-  $png-url-1x: if($embed, inline-image($png-file-1x), image-url($png-file-1x));
-  $png-url-2x: if($embed, inline-image($png-file-2x), image-url($png-file-2x));
+  $function: if(conf(single-embed), inline-image, image-url);
+  $svg-url: call($function, $svg-file);
+  $png-url-1x: call($function, $png-file-1x);
+  $png-url-2x: call($function, $png-file-2x);
 
   @if ($type == "svg") {
 
