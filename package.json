@@ -1,5 +1,6 @@
 {
   "name": "sassyicons",
+  "title": "SassyIcons",
   "version": "0.0.7",
   "keywords": [
     "sass",
@@ -21,16 +22,18 @@
     "url": "git://github.com/pascalduez/SassyIcons.git"
   },
   "devDependencies": {
-    "grunt": "^0.4.4",
+    "grunt": "^0.4.5",
     "grunt-autoprefixer": "^0.7.2",
-    "grunt-browser-sync": "^0.7.4",
-    "grunt-contrib-concat": "^0.4.0",
-    "grunt-contrib-sass": "^0.7.3",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-svgmin": "^0.4.0",
+    "grunt-browser-sync": "^0.9.1",
+    "grunt-bump": "^0.0.14",
     "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-gh-pages": "^0.9.1",
     "grunt-newer": "^0.7.0",
+    "grunt-shell": "^0.7.0",
     "grunt-svg2png": "pascalduez/grunt-svg2png",
+    "grunt-svgmin": "^0.4.0",
     "load-grunt-tasks": "^0.4.0",
     "time-grunt": "^0.3.1"
   },

@@ -10,15 +10,22 @@ module.exports = function(grunt) {
   require("time-grunt")(grunt);
 
   var config = {
-    name: "SassyIcons",
-    base: "./test",
-    scss: "./test/sass",
-    css: "./test/css",
-    img: "./test/img",
-    icons: "./test/img/icons",
-    src: "./stylesheets",
-    dist: "./dist"
+    base: "test",
+    scss: "test/sass",
+    css: "test/css",
+    img: "test/img",
+    icons: "test/img/icons",
+    sprites: "test/img/sprites",
+    src: "stylesheets",
+    dist: "dist"
   }
+
+  var banner = [
+    '// <%= pkg.title %> – v<%= pkg.version %>',
+    ' – <%= grunt.template.today("yyyy-mm-dd") %>\n',
+    '// <%= pkg.homepage %>\n',
+    '// License: <%= pkg.license.type %>\n\n'
+  ].join('');
 
   grunt.initConfig({
 
@@ -26,43 +33,26 @@ module.exports = function(grunt) {
 
     conf: config,
 
-    sass: {
-      options: {
-        //trace: true,
-        bundleExec: true,
-        compass: true,
-        style: "expanded"
-      },
-      test: {
-        options: {
-          loadPath: ["<%= conf.src %>"]
-        },
-        files: [{
-          expand: true,
-          cwd: "<%= conf.scss %>",
-          src: ["*.scss"],
-          dest: "<%= conf.css %>",
-          ext: ".css"
-        }]
-      },
-      dist: {
-        options: {
-          loadPath: ["<%= conf.dist %>"]
-        },
-        files: [{
-          expand: true,
-          cwd: "<%= conf.scss %>",
-          src: ["*.scss"],
-          dest: "<%= conf.css %>",
-          ext: ".css"
-        }]
+    shell: {
+      compass: {
+        command: function (target) {
+          var command = [
+            'bundle exec compass compile',
+            '--config',
+            '<%= conf.base %>/config.rb',
+            '--import-path',
+            config[target]
+          ].join(' ');
+
+          return grunt.template.process(command);
+        }
       }
     },
 
     watch: {
       test: {
         files: ["<%= conf.scss %>/*.scss"],
-        tasks: ["sass:test"]
+        tasks: ["shell:compass:src"]
       }
     },
 
@@ -148,7 +138,7 @@ module.exports = function(grunt) {
 
     concat: {
       options: {
-        banner: "/*! <%= conf.name %> – v<%= pkg.version %> – <%= grunt.template.today('yyyy-mm-dd') %> */\n",
+        banner: banner,
       },
       dist: {
         src: [
@@ -160,7 +150,7 @@ module.exports = function(grunt) {
           "<%= conf.src %>/icons/_generated.scss",
           "<%= conf.src %>/icons/_icon-generated.scss",
         ],
-        dest: "<%= conf.dist %>/_<%= conf.name %>.scss",
+        dest: "<%= conf.dist %>/_<%= pkg.title %>.scss",
       },
     }
 
@@ -174,7 +164,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask("dist", [
     "concat:dist",
-    "sass:dist"
+    "shell:compass:dist"
   ]);
 
   grunt.registerTask("icons_refresh", [
