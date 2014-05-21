@@ -1,10 +1,10 @@
 
 // Push new entry to `$map`
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @param [map] $map
 // @param $key
 // @param $value
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @return [map]
 
 @function _map-set($map, $key, $value) {
@@ -14,21 +14,24 @@
 
 
 // Join `$list` into a string
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @param [list] $list
 // @param [string] $glue
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @return [string]
 
 @function _join($list, $glue: "") {
   $result: "";
+  $length: length($list);
 
-  @if length($list) < 1 {
+  @if $length < 1 {
     @return $result;
   }
 
-  @for $i from 1 through length($list) {
-    $result: $result + nth($list, $i) + if($i != length($list), $glue, "");
+  @for $i from 1 through $length {
+    $result: $result
+             + nth($list, $i)
+             + if($i != $length, $glue, "");
   }
 
   @return $result;
@@ -37,10 +40,10 @@
 
 
 // Helper: retreive a sprite map.
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @param [string] $name
 // @param [string] $factor
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @return [spritemap]
 
 @function _sprite-map-get($name, $factor: 1x) {
@@ -49,15 +52,14 @@
 
 
 
-//
 // Helper: return correct sprites-map `background-position`.
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @param [spritemap] $map
 // @param [string] $sprite
 // @param [number] $offset-x
 // @param [number] $offset-y
 // @param [number] $scale
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // @return [list]
 
 @function _sprite-position($map, $sprite, $offset-x: 0, $offset-y: 0, $scale: 1) {
@@ -67,13 +69,12 @@
 
 
 
-//
 // Hidpi media query builder.
-// --------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // http://bjango.com/articles/min-device-pixel-ratio/
-// http://www.brettjankord.com/2012/11/28/cross-browser-retinahigh-resolution-media-queries
-// http://www.w3.org/blog/CSS/2012/06/14/unprefix-webkit-device-pixel-ratio
-// --------------------------------------------------------------------------------
+// http://brettjankord.com/2012/11/28/cross-browser-retinahigh-resolution-media-queries
+// http://w3.org/blog/CSS/2012/06/14/unprefix-webkit-device-pixel-ratio
+// -----------------------------------------------------------------------------
 
 @mixin hidpi-mq() {
   $hidpi-ratio: conf(hidpi-ratio);
