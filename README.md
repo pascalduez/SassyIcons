@@ -6,12 +6,14 @@ Works on top of compass sprite tools.
 It was designed to easily switch between SVG and PNG while working with icons as background-images.  
 SVG first with PNG sprite fallback, or PNG first with hidpi sprite support.  
 
+
 ## Mixins
 
 `sprite-map-create($name)`  
 `icon($name, $sprite [, $offset, $type])`  
 `icon-single($name, $sprite [, $type])`  
 `icon-generated($name, $sprite [, $type, $pos, $centered])`
+
 
 ## Documentation
 
@@ -30,6 +32,7 @@ Include the icon in a generated "pseudo-element". Default to :before.
 Allows for easier positioning or centering.  
 
 *Best workflow used in conjunction with [grunt-svg2png](https://github.com/pascalduez/grunt-svg2png)*
+
 
 ## Configuration
 
@@ -52,6 +55,7 @@ Override default values in a new `$icons-settings` map.
 
 * Sass ~> 3.3.0
 * Compass ~> 1.0.0.alpha.18
+
 
 ## Install
 
@@ -79,6 +83,7 @@ sass: {
 }
 ```
 
+
 ## Roadmap
 
 * More documentation
@@ -91,6 +96,7 @@ sass: {
 * Try to further improve output CSS
 * More control over print position in the stylesheet ?
 * Abstract and move away from compass sprites ?
+
 
 ## Development
 
@@ -108,3 +114,13 @@ sass: {
   3. Make your changes + write tests
   4. `grunt test`
   5. Commit + Pull request
+
+
+## Authors
+
+[Pascal Duez](http://pascalduez.me)
+
+
+## Licence
+
+SassyIcons is available under the [MIT](http://opensource.org/licenses/MIT) license.
