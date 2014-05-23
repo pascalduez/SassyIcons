@@ -56,7 +56,7 @@
     }
 
     .icons--png--offset .#{$icon} {
-      @include icon(social, $icon, $format: "png", $offset: 15px 15px);
+      @include icon(social, $icon, $offset: 15px 15px, $format: "png");
     }
 
     .icons--single--svg .#{$icon} {

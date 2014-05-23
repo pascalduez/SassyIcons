@@ -28,7 +28,7 @@ $icons-defaults: (
   // Whether to embed icons as data URI in the icon-single() mixin.
   single-embed: true,
 
-  // Default file format unless overriden by parameter, svg | png.
+  // Default file format unless overridden by parameter, svg | png.
   format: "svg",
 
   // Whether to support legacy browsers, svg fallback.

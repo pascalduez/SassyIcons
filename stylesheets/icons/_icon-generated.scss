@@ -10,9 +10,9 @@
 @mixin icon-generated(
   $name,
   $sprite,
-  $format: conf(format),
   $pos: "before",
-  $centered: false
+  $centered: false,
+  $format: conf(format)
 ) {
   position: relative;
 

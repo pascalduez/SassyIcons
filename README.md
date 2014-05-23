@@ -2,17 +2,20 @@
 
 Flexible system to manipulate icons, SVG, PNG, sprites.  
 
-Works on top of compass sprite tools.  
+Works on top of compass sprite API.  
 It was designed to easily switch between SVG and PNG while working with icons as background-images.  
+So you have more granular control over which icons to use as SVG or PNG.  
 SVG first with PNG sprite fallback, or PNG first with hidpi sprite support.  
+
+*Best workflow used in conjunction with [grunt-svg2png](https://github.com/pascalduez/grunt-svg2png)*
 
 
 ## Mixins
 
 `sprite-map-create($name)`  
-`icon($name, $sprite [, $offset, $type])`  
-`icon-single($name, $sprite [, $type])`  
-`icon-generated($name, $sprite [, $type, $pos, $centered])`
+`icon($name, $sprite [, $offset, $format])`  
+`icon-single($name, $sprite [, $format])`  
+`icon-generated($name, $sprite [, $pos, $centered, $format])`
 
 
 ## Documentation
@@ -20,18 +23,16 @@ SVG first with PNG sprite fallback, or PNG first with hidpi sprite support.
 **sprite-map-create($name)**  
 Create a new sprite map from folder.  
 
-**icon($name, $sprite [, $offset, $type])**  
+**icon($name, $sprite [, $offset, $format])**  
 Main icon mixin.  
 
-**icon-single($name, $sprite [, $type])**  
+**icon-single($name, $sprite [, $format])**  
 Embed a single icon as inline-image (no sprite).  
 Should be used sporadically.  
 
-**icon-generated($name, $sprite [, $type, $pos, $centered])**  
+**icon-generated($name, $sprite [, $pos, $centered, $format])**  
 Include the icon in a generated "pseudo-element". Default to :before.  
 Allows for easier positioning or centering.  
-
-*Best workflow used in conjunction with [grunt-svg2png](https://github.com/pascalduez/grunt-svg2png)*
 
 
 ## Configuration
@@ -46,6 +47,8 @@ $icons-defaults: (
   hidpi-scale  : 2,        // Scale of the hidpi pngs.
   hidpi-ratio  : 1.3,      // Minimum resolution ratio used in the hidpi media query.
   single-embed : true      // Whether to embed icons as data URI in the icon-single() mixin.
+  format       : "svg",    // Default file format unless overridden by parameter, svg | png.
+  legacy       : true      // Whether to support legacy browsers, svg fallback.
 );
 ```
 Override default values in a new `$icons-settings` map.
@@ -54,7 +57,7 @@ Override default values in a new `$icons-settings` map.
 ## Requirements
 
 * Sass ~> 3.3.0
-* Compass ~> 1.0.0.alpha.18
+* Compass ~> 1.0.0.alpha.19
 
 
 ## Install
@@ -62,13 +65,26 @@ Override default values in a new `$icons-settings` map.
 #### Git
 
 ```
-git clone git@github.com:pascalduez/SassyIcons.git && cd SassyIcons
+git clone git@github.com:pascalduez/SassyIcons.git
 ```
 
 #### npm
 
 ```
 npm install sassyicons --save
+```
+
+
+## Usage
+
+*Provided that [path] = path to SassyIcons*
+
+#### Example usage with vanilla [Compass](http://compass-style.org/help/tutorials/command-line)
+```css
+@import 'SassyIcons';
+```
+```
+bundle exec compass watch --import-path [path]/dist
 ```
 
 #### Example config with [grunt-contrib-sass](https://github.com/gruntjs/grunt-contrib-sass)
@@ -78,7 +94,7 @@ sass: {
   options: {
     bundleExec: true, // Optional usage of Bundler, but recommended.
     compass: true,
-    loadPath: ["./node_modules/sassyicons/dist/_SassyIcons.scss"]
+    loadPath: ["[path]/dist/_SassyIcons.scss"]
   }
 }
 ```
@@ -102,7 +118,7 @@ sass: {
 
 ### You need
 
-  * [NodeJS](http://nodejs.org)
+  * [Node.js](http://nodejs.org)
   * [Ruby](https://www.ruby-lang.org)
   * [Bundler](http://bundler.io) via `gem install bundler`
   * `grunt-cli` via `npm install -g grunt-cli`
