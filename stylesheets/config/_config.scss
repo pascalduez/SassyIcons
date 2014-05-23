@@ -29,7 +29,10 @@ $icons-defaults: (
   single-embed: true,
 
   // Default file format unless overriden by parameter, svg | png.
-  format: "png"
+  format: "svg",
+
+  // Whether to support legacy browsers, svg fallback.
+  legacy: true
 
 );
 

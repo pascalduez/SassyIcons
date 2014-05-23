@@ -11,13 +11,14 @@
   $offset: 0 0,
   $format: conf(format)
 ) {
-
   $map-1x: _sprite-map-get($name);
   $map-2x: _sprite-map-get($name, 2x);
 
   // Shorter mixin calls.
   $offset-x: nth($offset, 1);
   $offset-y: nth($offset, 2);
+
+  $legacy-support: conf(legacy);
 
   @if $format == "svg" {
 
@@ -32,12 +33,14 @@
       @content;
     }
 
-    .no-svg &,
-    .no-js & {
+    @if $legacy-support {
+      .no-svg &,
+      .no-js & {
 
-      @extend %sprite-map-#{$name}-image-map;
+        @extend %sprite-map-#{$name}-image-map;
 
-      background-position: _sprite-position($map-1x, $sprite, $offset-x, $offset-y);
+        background-position: _sprite-position($map-1x, $sprite, $offset-x, $offset-y);
+      }
     }
 
   }

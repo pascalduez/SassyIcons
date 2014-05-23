@@ -25,6 +25,8 @@
   $png-url-1x: call($function, $png-file-1x);
   $png-url-2x: call($function, $png-file-2x);
 
+  $legacy-support: conf(legacy);
+
   @if $format == "svg" {
 
     background: {
@@ -36,9 +38,11 @@
       @content;
     }
 
-    .no-svg &,
-    .no-js & {
-      background-image: $png-url-1x;
+    @if $legacy-support {
+      .no-svg &,
+      .no-js & {
+        background-image: $png-url-1x;
+      }
     }
 
   }
