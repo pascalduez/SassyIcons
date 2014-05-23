@@ -7,7 +7,13 @@
 // Default to :before
 // Allows for easier positioning or centering.
 //
-@mixin icon-generated($name, $sprite, $type: "svg", $pos: "before", $centered: false) {
+@mixin icon-generated(
+  $name,
+  $sprite,
+  $format: conf(format),
+  $pos: "before",
+  $centered: false
+) {
   position: relative;
 
   &:#{$pos} {
@@ -25,7 +31,7 @@
       left: calc(50% - #{$width} / 2);
     }
 
-    @include icon($name: $name, $sprite: $sprite, $type: $type);
+    @include icon($name: $name, $sprite: $sprite, $format: $format);
 
     @content;
   }

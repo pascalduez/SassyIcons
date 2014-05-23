@@ -6,7 +6,11 @@
 // Embed a single icon as inline-image (no sprite).
 // Should be used sporadically.
 //
-@mixin icon-single($name, $sprite, $type: "svg") {
+@mixin icon-single(
+  $name,
+  $sprite,
+  $format: conf(format)
+) {
 
   // sprite-file() and inline-image() no work.
   // @see https://github.com/chriseppstein/compass/issues/951
@@ -21,7 +25,7 @@
   $png-url-1x: call($function, $png-file-1x);
   $png-url-2x: call($function, $png-file-2x);
 
-  @if ($type == "svg") {
+  @if $format == "svg" {
 
     background: {
       image: $svg-url;
@@ -38,7 +42,7 @@
     }
 
   }
-  @else if ($type == "png") {
+  @else if $format == "png" {
 
     background: {
       image: $png-url-1x;

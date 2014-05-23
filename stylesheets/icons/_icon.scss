@@ -5,7 +5,12 @@
 //
 // Main icon mixin.
 //
-@mixin icon($name, $sprite, $offset: 0 0, $type: "svg") {
+@mixin icon(
+  $name,
+  $sprite,
+  $offset: 0 0,
+  $format: conf(format)
+) {
 
   $map-1x: _sprite-map-get($name);
   $map-2x: _sprite-map-get($name, 2x);
@@ -14,7 +19,7 @@
   $offset-x: nth($offset, 1);
   $offset-y: nth($offset, 2);
 
-  @if ($type == "svg") {
+  @if $format == "svg" {
 
     $svg-file: _join((conf(dir), $name, "#{$sprite}.svg"), "/");
 
@@ -36,7 +41,7 @@
     }
 
   }
-  @else if ($type == "png") {
+  @else if $format == "png" {
 
     @extend %sprite-map-#{$name}-image-map;
 

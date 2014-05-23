@@ -6,13 +6,31 @@
 
 // Default settings.
 $icons-defaults: (
-  spacing     : 30px,
-  dir         : "icons",
-  dir-png     : "png",
-  dir-hidpi   : "png_2x",
-  hidpi-scale : 2,
-  hidpi-ratio : 1.3,
-  single-embed: true
+
+  // Space around sprites in generated sprite map.
+  spacing: 30px,
+
+  // Main icons directory. sprite-map-create() allows to use sub dirs.
+  dir: "icons",
+
+  // Name of the png sub-folders.
+  dir-png: "png",
+
+  // Name of the hidpi png sub-folders.
+  dir-hidpi: "png_2x",
+
+  // Scale of the hidpi pngs.
+  hidpi-scale: 2,
+
+  // Minimum resolution ratio used in the hidpi media query.
+  hidpi-ratio: 1.3,
+
+  // Whether to embed icons as data URI in the icon-single() mixin.
+  single-embed: true,
+
+  // Default file format unless overriden by parameter, svg | png.
+  format: "png"
+
 );
 
 // User settings.
