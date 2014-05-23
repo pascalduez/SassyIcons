@@ -152,7 +152,22 @@ module.exports = function(grunt) {
         ],
         dest: "<%= conf.dist %>/_<%= pkg.title %>.scss",
       },
-    }
+    },
+
+    bump: {
+      options: {
+        files: ['package.json'],
+        updateConfigs: ['pkg'],
+        commit: true,
+        commitMessage: 'Release %VERSION%',
+        commitFiles: ['-a'], // '-a' for all files
+        createTag: true,
+        tagName: '%VERSION%',
+        tagMessage: 'Version %VERSION%',
+        push: false,
+        pushTo: 'master'
+      }
+    },
 
   });
 
@@ -165,6 +180,12 @@ module.exports = function(grunt) {
   grunt.registerTask("dist", [
     "concat:dist",
     "shell:compass:dist"
+  ]);
+
+  grunt.registerTask("release", [
+    "bump-only",
+    "dist",
+    "bump-commit"
   ]);
 
   grunt.registerTask("icons_refresh", [
