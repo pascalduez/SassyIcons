@@ -9,6 +9,8 @@ $icons-defaults: (
 
   // Space around sprites in generated sprite map.
   // Useful with `$offset` parameter.
+  // This setting is global for all sprite-maps.
+  // Can be set per sprite-map with the `$spacing` parameter.
   spacing: 0,
 
   // Main icons directory. sprite-map-create() allows to use sub dirs.

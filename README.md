@@ -15,7 +15,7 @@ Also managing several "thematic" sprites a breeze.
 
 ## Mixins
 
-`sprite-map-create($name)`  
+`sprite-map-create($name [, $spacing])`  
 `icon($name, $sprite [, $offset, $format])`  
 `icon-single($name, $sprite [, $format])`  
 `icon-generated($name, $sprite [, $pos, $centered, $format])`
@@ -46,6 +46,8 @@ $icons-defaults: (
 
   // Space around sprites in generated sprite map.
   // Useful with `$offset` parameter.
+  // This setting is global for all sprite-maps.
+  // Can be set per sprite-map with the `$spacing` parameter.
   spacing: 0,
 
   // Main icons directory. sprite-map-create() allows to use sub dirs.
