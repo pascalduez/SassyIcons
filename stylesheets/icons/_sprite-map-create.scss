@@ -8,13 +8,16 @@ $icons-maps: ();
 //
 // Create a new sprite map from folder.
 //
-@mixin sprite-map-create($name) {
+@mixin sprite-map-create(
+  $name,
+  $spacing: conf(spacing)
+) {
 
   $sprites-1x: _join((conf(dir), $name, conf(dir-png), "*.png"), "/");
   $sprites-2x: _join((conf(dir), $name, conf(dir-hidpi), "*.png"), "/");
 
-  $map-1x: sprite-map($sprites-1x, $spacing: conf(spacing));
-  $map-2x: sprite-map($sprites-2x, $spacing: conf(spacing));
+  $map-1x: sprite-map($sprites-1x, $spacing: $spacing);
+  $map-2x: sprite-map($sprites-2x, $spacing: $spacing);
 
   $icons-maps: _map-set($icons-maps, $name, (1x: $map-1x, 2x: $map-2x)) !global;
 

@@ -7,6 +7,9 @@ It was designed to easily switch between SVG and PNG while working with icons as
 So you have more granular control over which icons to use as SVG or PNG.  
 SVG first with PNG sprite fallback, or PNG first with hidpi sprite support.  
 
+Also managing several "thematic" sprites a breeze.  
+
+
 *Best workflow used in conjunction with [grunt-svg2png](https://github.com/pascalduez/grunt-svg2png)*
 
 
@@ -40,15 +43,35 @@ Allows for easier positioning or centering.
 ```scss
 // Default settings.
 $icons-defaults: (
-  spacing      : 30px,     // Space around sprites in generated sprite map.
-  dir          : "icons",  // Main icons directory. sprite-map-create() allows to use sub dirs.
-  dir-png      : "png",    // Name of the png sub-folders.
-  dir-hidpi    : "png_2x", // Name of the hidpi png sub-folders.
-  hidpi-scale  : 2,        // Scale of the hidpi pngs.
-  hidpi-ratio  : 1.3,      // Minimum resolution ratio used in the hidpi media query.
-  single-embed : true      // Whether to embed icons as data URI in the icon-single() mixin.
-  format       : "svg",    // Default file format unless overridden by parameter, svg | png.
-  legacy       : true      // Whether to support legacy browsers, svg fallback.
+
+  // Space around sprites in generated sprite map.
+  // Useful with `$offset` parameter.
+  spacing: 0,
+
+  // Main icons directory. sprite-map-create() allows to use sub dirs.
+  dir: "icons",
+
+  // Name of the png sub-folders.
+  dir-png: "png",
+
+  // Name of the hidpi png sub-folders.
+  dir-hidpi: "png_2x",
+
+  // Scale of the hidpi pngs.
+  hidpi-scale: 2,
+
+  // Minimum resolution ratio used in the hidpi media query.
+  hidpi-ratio: 1.3,
+
+  // Whether to embed icons as data URI in the icon-single() mixin.
+  single-embed: true,
+
+  // Default file format unless overridden by parameter, svg | png.
+  format: "svg",
+
+  // Whether to support legacy browsers, svg fallback.
+  legacy: true
+
 );
 ```
 Override default values in a new `$icons-settings` map.
@@ -79,7 +102,7 @@ npm install sassyicons --save
 
 *Provided that [path] = path to SassyIcons*
 
-#### Example usage with vanilla [Compass](http://compass-style.org/help/tutorials/command-line)
+#### Example usage with [Compass](http://compass-style.org/help/tutorials/command-line)
 ```css
 @import 'SassyIcons';
 ```
@@ -94,7 +117,7 @@ sass: {
   options: {
     bundleExec: true, // Optional usage of Bundler, but recommended.
     compass: true,
-    loadPath: ["[path]/dist/_SassyIcons.scss"]
+    loadPath: ['[path]/dist/_SassyIcons.scss']
   }
 }
 ```
@@ -112,6 +135,7 @@ sass: {
 * Try to further improve output CSS
 * More control over print position in the stylesheet ?
 * Abstract and move away from compass sprites ?
+* Move away from Modernizr classes ? Or make it an option.
 
 
 ## Development

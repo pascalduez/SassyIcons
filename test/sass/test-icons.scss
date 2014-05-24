@@ -43,7 +43,7 @@
   }
 
 
-  @include sprite-map-create(social);
+  @include sprite-map-create(social, $spacing: 30px);
 
   @each $icon in ("facebook", "twitter", "googleplus", "xing", "linkedin") {
 
@@ -56,7 +56,7 @@
     }
 
     .icons--png--offset .#{$icon} {
-      @include icon(social, $icon, $offset: 15px 15px, $format: "png");
+      @include icon(social, $icon, $offset: 15px, $format: "png");
     }
 
     .icons--single--svg .#{$icon} {

@@ -16,7 +16,7 @@
 
   // Shorter mixin calls.
   $offset-x: nth($offset, 1);
-  $offset-y: nth($offset, 2);
+  $offset-y: nth($offset, length($offset));
 
   $legacy-support: conf(legacy);
 
