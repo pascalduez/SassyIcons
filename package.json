@@ -9,7 +9,8 @@
     "icons",
     "svg",
     "png",
-    "sprites"
+    "sprites",
+    "hidpi"
   ],
   "homepage": "https://github.com/pascalduez/SassyIcons",
   "bugs": "https://github.com/pascalduez/SassyIcons/issues",

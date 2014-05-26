@@ -99,6 +99,12 @@ git clone git@github.com:pascalduez/SassyIcons.git
 npm install sassyicons --save
 ```
 
+#### Bower
+
+```
+bower install SassyIcons --save
+```
+
 
 ## Usage
 
