@@ -133,6 +133,15 @@ module.exports = function(grunt) {
           cwd: "<%= conf.icons %>",
           src: ["**/png", "**/png_2x"]
         }]
+      },
+      rebuild: {
+        src: [
+          'node_modules',
+          'ruby',
+          'Gemfile.lock',
+          '.sass-cache',
+          '.bundle'
+        ]
       }
     },
 
@@ -168,6 +177,15 @@ module.exports = function(grunt) {
         pushTo: 'master'
       }
     },
+
+    'gh-pages': {
+      options: {
+        base: 'test',
+        message: 'Update gh-pages',
+        push: true
+      },
+      src: ['index.html', 'img/*', 'css/*']
+    }
 
   });
 

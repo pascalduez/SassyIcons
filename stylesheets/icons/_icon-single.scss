@@ -27,6 +27,8 @@
 
   $legacy-support: conf(legacy);
 
+  $format: to-lower-case($format);
+
   @if $format == "svg" {
 
     background: {

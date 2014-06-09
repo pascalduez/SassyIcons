@@ -20,6 +20,8 @@
 
   $legacy-support: conf(legacy);
 
+  $format: to-lower-case($format);
+
   @if $format == "svg" {
 
     $svg-file: _join((conf(dir), $name, "#{$sprite}.svg"), "/");
