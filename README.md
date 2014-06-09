@@ -105,6 +105,12 @@ npm install sassyicons --save
 bower install SassyIcons --save
 ```
 
+#### Compass extension
+
+1. `bundle install SassyIcons` or `gem install SassyIcons`
+2. Add `require 'SassyIcons'` to your `config.rb`
+3. Import it in your stylesheets with `@import 'SassyIcons'`
+
 
 ## Usage
 
