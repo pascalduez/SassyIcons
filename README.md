@@ -144,6 +144,7 @@ sass: {
 * More control over print position in the stylesheet ?
 * Abstract and move away from compass sprites ?
 * Move away from Modernizr classes ? Or make it an option.
+* Clarify or remove the `@content` thing to pass additional rules to `.svg`.
 
 
 ## Development
