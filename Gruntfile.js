@@ -184,7 +184,7 @@ module.exports = function(grunt) {
         message: 'Update gh-pages',
         push: true
       },
-      src: ['index.html', 'img/*', 'css/*']
+      src: ['index.html', 'img/**/*', 'css/*']
     }
 
   });

@@ -10,8 +10,9 @@ SVG first with PNG sprite fallback, or PNG first with hidpi sprite support.
 Also managing several "thematic" sprites a breeze.  
 
 
-*Best workflow used in conjunction with [grunt-svg2png](https://github.com/pascalduez/grunt-svg2png)*
+*Best workflow used in conjunction with [grunt-svg2png](https://github.com/pascalduez/grunt-svg2png).*
 
+*Online [preview](http://pascalduez.github.io/SassyIcons) (test folder).*
 
 ## Mixins
 
