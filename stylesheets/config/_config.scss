@@ -1,10 +1,12 @@
-//
-// SassyIcons
-//
 
-// Configuration
+// SassyIcons: configuration
+// -------------------------
 
-// Default settings.
+
+// @var {map} - Default settings.
+// ---
+// @access private
+
 $icons-defaults: (
 
   // Space around sprites in generated sprite map.
@@ -39,10 +41,19 @@ $icons-defaults: (
 
 );
 
-// User settings.
+
+// @var {map} - User settings.
+
 $icons-settings: () !default;
 
+
 // Retreive a configuration item.
+// ---
+// @param {string} $name
+// @param {string} $factor
+// ---
+// @return {spritemap}
+
 @function conf($key) {
   @if not map-has-key($icons-defaults, $key) {
     @warn "No item `#{$key}` found in configuration.";

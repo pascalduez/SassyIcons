@@ -36,6 +36,7 @@
     "grunt-svg2png": "pascalduez/grunt-svg2png",
     "grunt-svgmin": "^0.4.0",
     "load-grunt-tasks": "^0.4.0",
+    "sassdoc": "^0.3.4",
     "time-grunt": "^0.3.2"
   },
   "engines": {
@@ -47,6 +48,7 @@
   },
   "scripts": {
     "install": "bundle install --path .",
-    "test": "grunt test"
+    "test": "grunt test",
+    "docs": "sassdoc stylesheets docs --verbose"
   }
 }

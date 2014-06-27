@@ -1,10 +1,20 @@
-//
-// SassyIcons
-//
 
-//
+// SassyIcons: icon
+// ----------------
+
+
 // Main icon mixin.
-//
+// ---
+// @requires conf
+// @requires _sprite-map-get
+// @requires _join
+// @requires _sprite-position
+// ---
+// @param {string} $name
+// @param {string} $sprite
+// @param {list}   $offset
+// @param {string} $format
+
 @mixin icon(
   $name,
   $sprite,
@@ -20,11 +30,12 @@
 
   $legacy-support: conf(legacy);
 
+  // Allow to pass format as uppercase.
   $format: to-lower-case($format);
 
-  @if $format == "svg" {
+  @if $format == 'svg' {
 
-    $svg-file: _join((conf(dir), $name, "#{$sprite}.svg"), "/");
+    $svg-file: _join((conf(dir), $name, '#{$sprite}.svg'), '/');
 
     background: {
       image: inline-image($svg-file);
@@ -46,7 +57,7 @@
     }
 
   }
-  @else if $format == "png" {
+  @else if $format == 'png' {
 
     @extend %sprite-map-#{$name}-image-map;
 

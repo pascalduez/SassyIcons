@@ -1,16 +1,27 @@
-//
-// SassyIcons
-//
 
-//
+// SassyIcons: icon-generated
+// --------------------------
+
+
 // Include the icon in a generated "pseudo-element".
-// Default to :before
+// Default to :before.
 // Allows for easier positioning or centering.
-//
+// ---
+// @requires conf
+// @requires _sprite-map-get
+// @requires generated
+// @requires icon
+// ---
+// @param {string} $name
+// @param {string} $sprite
+// @param {string} $pos ('before')
+// @param {bool}   $centered (false)
+// @param {string} $format
+
 @mixin icon-generated(
   $name,
   $sprite,
-  $pos: "before",
+  $pos: 'before',
   $centered: false,
   $format: conf(format)
 ) {
@@ -24,7 +35,7 @@
 
     @include generated($width, $height);
 
-    @if ($centered) {
+    @if $centered {
       top: 35%;
       top: calc(50% - #{$height} / 2);
       left: 35%;

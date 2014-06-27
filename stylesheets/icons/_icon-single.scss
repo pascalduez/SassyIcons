@@ -1,11 +1,19 @@
-//
-// SassyIcons
-//
 
-//
+// SassyIcons: icon-single
+// -----------------------
+
+
 // Embed a single icon as inline-image (no sprite).
 // Should be used sporadically.
-//
+// ---
+// @requires conf
+// @requires _join
+// ---
+// @param {string} $name
+// @param {string} $sprite
+// @param {string} $format
+// ---
+
 @mixin icon-single(
   $name,
   $sprite,
@@ -16,9 +24,9 @@
   // @see https://github.com/chriseppstein/compass/issues/951
 
   $dir: conf(dir);
-  $svg-file: _join(($dir, $name, "#{$sprite}.svg"), "/");
-  $png-file-1x: _join(($dir, $name, conf(dir-png), "#{$sprite}.png"), "/");
-  $png-file-2x: _join(($dir, $name, conf(dir-hidpi), "#{$sprite}.png"), "/");
+  $svg-file: _join(($dir, $name, '#{$sprite}.svg'), '/');
+  $png-file-1x: _join(($dir, $name, conf(dir-png), '#{$sprite}.png'), '/');
+  $png-file-2x: _join(($dir, $name, conf(dir-hidpi), '#{$sprite}.png'), '/');
 
   $function: if(conf(single-embed), inline-image, image-url);
   $svg-url: call($function, $svg-file);
@@ -27,9 +35,10 @@
 
   $legacy-support: conf(legacy);
 
+  // Allow to pass format as uppercase.
   $format: to-lower-case($format);
 
-  @if $format == "svg" {
+  @if $format == 'svg' {
 
     background: {
       image: $svg-url;
@@ -48,7 +57,7 @@
     }
 
   }
-  @else if $format == "png" {
+  @else if $format == 'png' {
 
     background: {
       image: $png-url-1x;

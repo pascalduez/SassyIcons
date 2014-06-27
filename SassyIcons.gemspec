@@ -33,6 +33,6 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.6}
 
   # Gems Dependencies
-  s.add_dependency("sass",      [">= 3.3"])
-  s.add_dependency("compass",   [">=1.0.0.alpha.19"])
+  s.add_dependency("sass",    [">= 3.3"])
+  s.add_dependency("compass", [">=1.0.0.alpha.19"])
 end

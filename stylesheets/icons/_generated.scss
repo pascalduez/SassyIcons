@@ -1,11 +1,25 @@
 
-//
-// Generated content.
-//
-@mixin generated($width: false, $height: false, $top: false, $right: false, $bottom: false, $left: false) {
-  //
-  //  Boilerplate styles for generated content .before :after
-  //
+// SassyIcons: generated
+// ---------------------
+
+
+// Boilerplate styles for generated content :before :after.
+// ---
+// @param {number} $width
+// @param {number} $height
+// @param {number} $top
+// @param {number} $right
+// @param {number} $bottom
+// @param {number} $left
+
+@mixin generated(
+  $width: false,
+  $height: false,
+  $top: false,
+  $right: false,
+  $bottom: false,
+  $left: false
+) {
   @if ($width) { width: $width };
   @if ($height) { height: $height };
   content: "";
