@@ -12,31 +12,15 @@ Also managing several "thematic" sprites a breeze.
 
 *Best workflow used in conjunction with [grunt-svg2png](https://github.com/pascalduez/grunt-svg2png).*
 
-*Online [preview](http://pascalduez.github.io/SassyIcons) (test folder).*
+*Online [preview](http://pascalduez.github.io/SassyIcons/test) (test folder).*  
+*Online [Documentation](http://pascalduez.github.io/SassyIcons/docs) (generated with SassDoc).*
 
 ## Mixins
 
 `sprite-map-create($name [, $spacing])`  
-`icon($name, $sprite [, $offset, $format])`  
-`icon-single($name, $sprite [, $format])`  
-`icon-generated($name, $sprite [, $pos, $centered, $format])`
-
-
-## Documentation
-
-**sprite-map-create($name)**  
-Create a new sprite map from folder.  
-
-**icon($name, $sprite [, $offset, $format])**  
-Main icon mixin.  
-
-**icon-single($name, $sprite [, $format])**  
-Embed a single icon as inline-image (no sprite).  
-Should be used sporadically.  
-
-**icon-generated($name, $sprite [, $pos, $centered, $format])**  
-Include the icon in a generated "pseudo-element". Default to :before.  
-Allows for easier positioning or centering.  
+`icon($map, $sprite [, $offset, $format])`  
+`icon-single($map, $sprite [, $format])`  
+`icon-generated($map, $sprite [, $pos, $centered, $format])`
 
 
 ## Configuration
@@ -45,13 +29,13 @@ Allows for easier positioning or centering.
 // Default settings.
 $icons-defaults: (
 
-  // Space around sprites in generated sprite map.
+  // Space around sprites in generated spritemap.
   // Useful with `$offset` parameter.
-  // This setting is global for all sprite-maps.
-  // Can be set per sprite-map with the `$spacing` parameter.
+  // This setting is global for all spritemaps.
+  // Can be set per spritemap with the `$spacing` parameter.
   spacing: 0,
 
-  // Main icons directory. sprite-map-create() allows to use sub dirs.
+  // Main icons directory. `sprite-map-create()`, base for sub dirs.
   dir: "icons",
 
   // Name of the png sub-folders.
@@ -66,7 +50,7 @@ $icons-defaults: (
   // Minimum resolution ratio used in the hidpi media query.
   hidpi-ratio: 1.3,
 
-  // Whether to embed icons as data URI in the icon-single() mixin.
+  // Whether to embed icons as data URI in the `icon-single()` mixin.
   single-embed: true,
 
   // Default file format unless overridden by parameter, svg | png.

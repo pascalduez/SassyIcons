@@ -142,6 +142,9 @@ module.exports = function(grunt) {
           '.sass-cache',
           '.bundle'
         ]
+      },
+      www: {
+        src: ['www']
       }
     },
 
@@ -178,17 +181,40 @@ module.exports = function(grunt) {
       }
     },
 
+    copy: {
+      www: {
+        files: [
+          {
+            expand: true,
+            src: ['docs/**'],
+            dest: 'www/'
+          },
+          {
+            expand: true,
+            cwd: 'test/',
+            src: ['index.html', 'img/**/*', 'css/*'],
+            dest: 'www/test'
+          }
+        ]
+      }
+    },
+
     'gh-pages': {
       options: {
-        base: 'test',
+        base: 'www',
         message: 'Update gh-pages',
         push: true
       },
-      src: ['index.html', 'img/**/*', 'css/*']
+      src: ['**']
     }
 
   });
 
+  grunt.registerTask("www", [
+    "copy:www",
+    "gh-pages",
+    "clean:www"
+  ]);
 
   grunt.registerTask("test", [
     "browserSync:test",
