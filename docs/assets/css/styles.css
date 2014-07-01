@@ -1,0 +1,304 @@
+/**
+ * Univeral box-sizing reset
+ */
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/**
+ * Base font size
+ */
+html {
+  font-size: 62.5%;
+}
+
+/**
+ * Body rules
+ */
+body {
+  font: 1.6em/1.35 'Ubuntu', 'Helvetica', sans-serif;
+  overflow: auto;
+  margin: 0;
+  counter-reset: sections;
+}
+
+/**
+ * Links
+ */
+a {
+  transition: .15s;
+  text-decoration: none;
+  color: #c6538c;
+}
+
+a:hover code,
+a:hover {
+  color: #333;
+}
+
+/**
+ * Main container
+ */
+.container {
+  width: 1170px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 0 1em;
+}
+
+/**
+ * Header
+ */
+.sassdoc__header {
+  padding: 1em;
+  background: #c6538c;
+  color: white;
+  margin-bottom: 2em;
+  border-bottom: 0.5em solid #f2d9e6;
+}
+
+/**
+ * Main title
+ */
+.sassdoc__title {
+  font-size: 1em;
+  margin: 0;
+  float: left;
+}
+
+/**
+ * Item count
+ */
+.sassdoc__count {
+  float: right;
+  margin: 0;
+}
+
+/**
+ * Doc map
+ */
+.sassdoc__map {
+  width: 27%;
+  float: left;
+}
+
+/**
+ * Map main wrapper
+ */
+.sassdoc__map-container {
+  padding-top: .5em;
+  background-color: #f7f5fa;
+}
+
+/**
+ * Map list
+ */
+.sassdoc__map ul {
+  list-style: none;
+}
+
+/**
+ * Map link
+ */
+.sassdoc__map a {
+  font-weight: bold;
+  color: #699;
+  text-decoration: none;
+}
+
+.sassdoc__map a:hover {
+  text-decoration: underline;
+}
+
+/**
+ * Map heading
+ */
+.sassdoc__map-heading {
+  color: #333;
+  font-size: 1.2em;
+}
+
+/**
+ * List item section
+ */
+.sassdoc__map-section a {
+  font-weight: bold;
+  display: block;
+  color: #c7254e;
+  margin-top: 1em;
+}
+
+/**
+ * Main wrapper
+ */
+.sassdoc__container {
+  width: 70%;
+  float: right;
+  margin-top: .5em;
+}
+
+/**
+ * Main titles
+ */
+.sassdoc__section {
+  color: #555;
+  background-color: #f7f5fa;
+  padding: 1em;
+  text-transform: uppercase;
+  counter-increment: sections;
+  border-bottom: .3em solid #c69;
+}
+
+.sassdoc__section::before {
+  content: counter(sections) '. ';
+}
+
+/**
+ * Code blocks
+ */
+.sassdoc pre {
+  display: block;
+  font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+  word-wrap: break-word;
+  word-break: break-all;
+  color: #333;
+  line-height: 1.42;
+}
+
+/**
+ * Inline code
+ */
+.sassdoc :not(pre) > code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  white-space: nowrap;
+  border-radius: 4px;
+}
+
+/**
+ * Deprecated flag
+ */
+.sassdoc__item-deprecated {
+  color: #998099;
+  text-transform: uppercase;
+}
+
+/**
+ * Type
+ */
+.sassdoc__item-type {
+  color: #bbb;
+  text-transform: capitalize;
+  font-size: .75em;
+}
+
+/**
+ * Function code
+ */
+.sassdoc__item-code {
+  background: #efefef;
+  margin-bottom: 1em;
+  padding: 1em;
+  border-left: .3em solid #c69;
+}
+
+/**
+ * Aliases
+ */ 
+.sassdoc__item-alias {
+  color: #bbb;
+  font-size: .8em;
+}
+
+/**
+ * Subtitles
+ */
+.sassdoc__item h3 {
+  color: #699;
+  text-transform: uppercase;
+  font-size: 1em;
+}
+
+/**
+ * Function name
+ */
+.sassdoc__item-name {
+  color: #699;
+  font-size: 2.2em;
+  margin: 0;
+}
+
+/**
+ * Paragraph content
+ */ 
+.sassdoc__item p {
+  margin: 0 0 .5em 0;
+}
+
+/**
+ * Space between docs
+ */
+.sassdoc__item + .sassdoc__item {
+  margin: 4em 0;
+}
+
+/**
+ * Alias functions/mixins
+ */
+.sassdoc__item--alias {
+  opacity: .75;
+  transition: .15s;
+}
+
+.sassdoc__item--alias:hover {
+  opacity: 1;
+}
+
+/**
+ * Parameters table
+ */
+.sassdoc__item-parameters {
+  width: 100%;
+  margin-bottom: 1em;
+  border-collapse: collapse;
+}
+
+.sassdoc__item-parameters > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+  border-top: none;
+  text-align: left;
+}
+
+.sassdoc__item-parameters td,
+.sassdoc__item-parameters th {
+  padding: .5em;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+
+.sassdoc__item-parameters > tbody > tr:first-of-type > td {
+  border-top: none;
+}
+
+/**
+ * Scope/access
+ */ 
+.sassdoc__item-access {
+  text-transform: capitalize;
+}
+
+/**
+ * Lists
+ */
+.sassdoc__item-usedby,
+.sassdoc__item-todos,
+.sassdoc__item-todos,
+.sassdoc__item-links,
+.sassdoc__item-requires {
+  padding-left: 0;
+  list-style: none;
+}

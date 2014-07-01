@@ -3,14 +3,14 @@
 // ---------------------
 
 
-// Boilerplate styles for generated content :before :after.
+// Boilerplate styles for generated content `:before` or `:after`.
 // ---
-// @param {number} $width
-// @param {number} $height
-// @param {number} $top
-// @param {number} $right
-// @param {number} $bottom
-// @param {number} $left
+// @param {Number} $width
+// @param {Number} $height
+// @param {Number} $top
+// @param {Number} $right
+// @param {Number} $bottom
+// @param {Number} $left
 
 @mixin generated(
   $width: false,
@@ -20,15 +20,15 @@
   $bottom: false,
   $left: false
 ) {
-  @if ($width) { width: $width };
-  @if ($height) { height: $height };
+  @if $width { width: $width };
+  @if $height { height: $height };
   content: "";
   display: block;
   position: absolute;
-  @if($top) { top: $top; }
-  @if($right) { right: $right; }
-  @if($bottom) { bottom: $bottom; }
-  @if($left) { left: $left; }
+  @if $top { top: $top; }
+  @if $right { right: $right; }
+  @if $bottom { bottom: $bottom; }
+  @if $left { left: $left; }
   z-index: 1;
 
   @content;

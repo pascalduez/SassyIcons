@@ -3,8 +3,8 @@
 // --------------------------
 
 
-// Include the icon in a generated "pseudo-element".
-// Default to :before.
+// Include the icon in a generated pseudo-element.
+// Default to `:before`.
 // Allows for easier positioning or centering.
 // ---
 // @requires conf
@@ -12,14 +12,14 @@
 // @requires generated
 // @requires icon
 // ---
-// @param {string} $name
-// @param {string} $sprite
-// @param {string} $pos ('before')
-// @param {bool}   $centered (false)
-// @param {string} $format
+// @param {String} $map - spritemap name
+// @param {String} $sprite - sprite name
+// @param {String} $pos ('before') - pseudo-element position
+// @param {Bool}   $centered (false) - whether to center the icon (relative to its parent)
+// @param {String} $format (conf.format) - file format 'svg' | 'png'
 
 @mixin icon-generated(
-  $name,
+  $map,
   $sprite,
   $pos: 'before',
   $centered: false,
@@ -28,7 +28,7 @@
   position: relative;
 
   &:#{$pos} {
-    $sprite-file: sprite-file(_sprite-map-get($name), $sprite);
+    $sprite-file: sprite-file(_sprite-map-get($map), $sprite);
 
     $width: image-width($sprite-file);
     $height: image-height($sprite-file);
@@ -42,7 +42,7 @@
       left: calc(50% - #{$width} / 2);
     }
 
-    @include icon($name: $name, $sprite: $sprite, $format: $format);
+    @include icon($map: $map, $sprite: $sprite, $format: $format);
 
     @content;
   }

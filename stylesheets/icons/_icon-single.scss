@@ -3,19 +3,18 @@
 // -----------------------
 
 
-// Embed a single icon as inline-image (no sprite).
+// Embed a single icon as inline-image (no spritemap).
 // Should be used sporadically.
 // ---
 // @requires conf
 // @requires _join
 // ---
-// @param {string} $name
-// @param {string} $sprite
-// @param {string} $format
-// ---
+// @param {String} $map - spritemap name
+// @param {String} $sprite - sprite name
+// @param {String} $format (conf.format) - file format 'svg' | 'png'
 
 @mixin icon-single(
-  $name,
+  $map,
   $sprite,
   $format: conf(format)
 ) {
@@ -24,9 +23,9 @@
   // @see https://github.com/chriseppstein/compass/issues/951
 
   $dir: conf(dir);
-  $svg-file: _join(($dir, $name, '#{$sprite}.svg'), '/');
-  $png-file-1x: _join(($dir, $name, conf(dir-png), '#{$sprite}.png'), '/');
-  $png-file-2x: _join(($dir, $name, conf(dir-hidpi), '#{$sprite}.png'), '/');
+  $svg-file: _join(($dir, $map, '#{$sprite}.svg'), '/');
+  $png-file-1x: _join(($dir, $map, conf(dir-png), '#{$sprite}.png'), '/');
+  $png-file-2x: _join(($dir, $map, conf(dir-hidpi), '#{$sprite}.png'), '/');
 
   $function: if(conf(single-embed), inline-image, image-url);
   $svg-url: call($function, $svg-file);

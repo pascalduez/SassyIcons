@@ -1,0 +1,1435 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>SassDoc :: Documentation</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Ubuntu'>
+  <meta name="viewport" content="width=device-width">
+</head>
+<body>
+  <div class="sassdoc">
+
+    <header class="sassdoc__header">
+      <div class="container">
+        <h1 class="sassdoc__title">SassDoc</h1>
+        <p class="sassdoc__count">12 items documented</p>
+      </div>
+    </header>
+
+    <div class="container">
+
+      <aside class="sassdoc__map">
+        
+  <h2 class="sassdoc__map-heading">Documentation map</h2>
+<div class="sassdoc__map-container">
+<ul>
+
+  <li class="sassdoc__map-section"><a href="#functions">Functions</a></li>
+  
+    
+      <li><a href="#function-_join">_join</a></li>
+    
+  
+    
+      <li><a href="#function-_sprite-map-get">_sprite-map-get</a></li>
+    
+  
+    
+      <li><a href="#function-_sprite-position">_sprite-position</a></li>
+    
+  
+    
+      <li><a href="#function-conf">conf</a></li>
+    
+  
+
+  <li class="sassdoc__map-section"><a href="#mixins">Mixins</a></li>
+  
+    
+      <li><a href="#mixin-generated">generated</a></li>
+    
+  
+    
+      <li><a href="#mixin-hidpi-mq">hidpi-mq</a></li>
+    
+  
+    
+      <li><a href="#mixin-icon">icon</a></li>
+    
+  
+    
+      <li><a href="#mixin-icon-generated">icon-generated</a></li>
+    
+  
+    
+      <li><a href="#mixin-icon-single">icon-single</a></li>
+    
+  
+    
+      <li><a href="#mixin-sprite-map-create">sprite-map-create</a></li>
+    
+  
+
+  <li class="sassdoc__map-section"><a href="#variables">Variables</a></li>
+  
+    
+      <li><a href="#variable-icons-settings">icons-settings</a></li>
+    
+  
+    
+      <li><a href="#variable-icons-spritemaps">icons-spritemaps</a></li>
+    
+  
+
+</ul>
+</div>
+
+      </aside>
+
+      <article class="sassdoc__container">
+        
+  
+    <h1 class="sassdoc__section" id="functions">Functions</h1>
+    
+      
+      <section class="sassdoc__item  " id="function-_join">
+  <h2 class="sassdoc__item-name">
+    
+    <code>_join</code>
+
+    
+
+    
+  </h2>
+
+  
+
+    
+    
+      
+
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+        
+      
+
+      
+
+      
+        
+      
+    
+    <pre class="sassdoc__item-code">@function _join ($list, $glue: &#39;&#39;) { ... }  </pre>
+
+    
+      <h3>Description</h3>
+      <p class="sassdoc__item-description"><p>Helper: join <code>$list</code> into a string.</p></p>
+    
+
+    
+      <h3>Access</h3>
+      <p class="sassdoc__item-access">private</p>
+    
+
+    
+
+    <h3>Parameters</h3>
+    
+    <table class="sassdoc__item-parameters">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Default value</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$list</code></td>
+            <td>the list to convert</td>
+            <td><code>List</code></td>
+            <td>&mdash;</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$glue</code></td>
+            <td>a string to separate each element of the list</td>
+            <td><code>String</code></td>
+            <td>&#39;&#39;</td>
+          </tr>
+        
+      </tbody>
+    </table>
+    
+
+    
+      <h3>Returns</h3>
+      <p class="sassdoc__item-description"><code>String</code></p>
+    
+
+    
+
+    
+
+    
+      <h3>Requires</h3>
+      
+        <ul class="sassdoc__item-usedby">
+        <li><a href="#mixin-icon-single"><code>icon-single</code></a></li>
+        
+      
+        
+        <li><a href="#mixin-icon"><code>icon</code></a></li>
+        
+      
+        
+        <li><a href="#mixin-sprite-map-create"><code>sprite-map-create</code></a></li>
+        </ul>
+      
+    
+
+    
+
+    
+
+    
+
+  
+
+</section>
+    
+      
+      <section class="sassdoc__item  " id="function-_sprite-map-get">
+  <h2 class="sassdoc__item-name">
+    
+    <code>_sprite-map-get</code>
+
+    
+
+    
+  </h2>
+
+  
+
+    
+    
+      
+
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+        
+      
+
+      
+
+      
+        
+      
+    
+    <pre class="sassdoc__item-code">@function _sprite-map-get ($name, $factor: 1x) { ... }  </pre>
+
+    
+      <h3>Description</h3>
+      <p class="sassdoc__item-description"><p>Helper: retrieve a spritemap.&lt;br /&gt;@return {Spritemap}</p></p>
+    
+
+    
+      <h3>Access</h3>
+      <p class="sassdoc__item-access">private</p>
+    
+
+    
+
+    <h3>Parameters</h3>
+    
+    <table class="sassdoc__item-parameters">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Default value</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$name</code></td>
+            <td>spritemap name</td>
+            <td><code>String</code></td>
+            <td>&mdash;</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$factor</code></td>
+            <td>dpi factor</td>
+            <td><code>String</code></td>
+            <td>1x</td>
+          </tr>
+        
+      </tbody>
+    </table>
+    
+
+    
+
+    
+
+    
+
+    
+      <h3>Requires</h3>
+      
+        <ul class="sassdoc__item-usedby">
+        <li><a href="#mixin-icon-generated"><code>icon-generated</code></a></li>
+        
+      
+        
+        <li><a href="#mixin-icon"><code>icon</code></a></li>
+        </ul>
+      
+    
+
+    
+
+    
+
+    
+
+  
+
+</section>
+    
+      
+      <section class="sassdoc__item  " id="function-_sprite-position">
+  <h2 class="sassdoc__item-name">
+    
+    <code>_sprite-position</code>
+
+    
+
+    
+  </h2>
+
+  
+
+    
+    
+      
+
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+        
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+        
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+        
+      
+
+      
+
+      
+        
+      
+    
+    <pre class="sassdoc__item-code">@function _sprite-position ($sprite, $offset-x: 0, $offset-y: 0, $scale: 1) { ... }  </pre>
+
+    
+      <h3>Description</h3>
+      <p class="sassdoc__item-description"><p>Helper: return correct spritemap <code>background-position</code>.&lt;br /&gt;@param {Spritemap} $map - spritemap name</p></p>
+    
+
+    
+      <h3>Access</h3>
+      <p class="sassdoc__item-access">private</p>
+    
+
+    
+
+    <h3>Parameters</h3>
+    
+    <table class="sassdoc__item-parameters">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Default value</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$sprite</code></td>
+            <td>sprite name</td>
+            <td><code>String</code></td>
+            <td>&mdash;</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$offset-x</code></td>
+            <td>adjustment along the x axis</td>
+            <td><code>Number</code></td>
+            <td>0</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$offset-y</code></td>
+            <td>adjustment along the y axis</td>
+            <td><code>Number</code></td>
+            <td>0</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$scale</code></td>
+            <td>spritemap scale</td>
+            <td><code>Number</code></td>
+            <td>1</td>
+          </tr>
+        
+      </tbody>
+    </table>
+    
+
+    
+      <h3>Returns</h3>
+      <p class="sassdoc__item-description">(x-pos y-pos): <code>List</code></p>
+    
+
+    
+
+    
+
+    
+      <h3>Requires</h3>
+      
+        <ul class="sassdoc__item-usedby">
+        <li><a href="#mixin-icon"><code>icon</code></a></li>
+        </ul>
+      
+    
+
+    
+
+    
+
+    
+
+  
+
+</section>
+    
+      
+      <section class="sassdoc__item  " id="function-conf">
+  <h2 class="sassdoc__item-name">
+    
+    <code>conf</code>
+
+    
+
+    
+  </h2>
+
+  
+
+    
+    
+      
+
+      
+
+      
+
+      
+        
+      
+    
+    <pre class="sassdoc__item-code">@function conf ($name) { ... }  </pre>
+
+    
+      <h3>Description</h3>
+      <p class="sassdoc__item-description"><p>Retrieve a configuration item.</p></p>
+    
+
+    
+      <h3>Access</h3>
+      <p class="sassdoc__item-access">private</p>
+    
+
+    
+
+    <h3>Parameters</h3>
+    
+    <table class="sassdoc__item-parameters">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Default value</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$name</code></td>
+            <td>configuration item key</td>
+            <td><code>String</code></td>
+            <td>&mdash;</td>
+          </tr>
+        
+      </tbody>
+    </table>
+    
+
+    
+      <h3>Returns</h3>
+      <p class="sassdoc__item-description"><code>*</code></p>
+    
+
+    
+
+    
+
+    
+      <h3>Requires</h3>
+      
+        <ul class="sassdoc__item-usedby">
+        <li><a href="#mixin-icon-generated"><code>icon-generated</code></a></li>
+        
+      
+        
+        <li><a href="#mixin-icon-single"><code>icon-single</code></a></li>
+        
+      
+        
+        <li><a href="#mixin-icon"><code>icon</code></a></li>
+        
+      
+        
+        <li><a href="#mixin-sprite-map-create"><code>sprite-map-create</code></a></li>
+        </ul>
+      
+    
+
+    
+
+    
+
+    
+
+  
+
+</section>
+    
+  
+    <h1 class="sassdoc__section" id="mixins">Mixins</h1>
+    
+      
+      <section class="sassdoc__item  " id="mixin-generated">
+  <h2 class="sassdoc__item-name">
+    
+    <code>generated</code>
+
+    
+
+    
+  </h2>
+
+  
+
+    
+    
+      
+
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+
+      
+
+      
+        
+      
+    
+    <pre class="sassdoc__item-code">@mixin generated ($width, $height, $top, $right, $bottom, $left) { ... }  </pre>
+
+    
+      <h3>Description</h3>
+      <p class="sassdoc__item-description"><p>Boilerplate styles for generated content <code>:before</code> or <code>:after</code>.</p></p>
+    
+
+    
+
+    
+
+    <h3>Parameters</h3>
+    
+    <table class="sassdoc__item-parameters">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Default value</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$width</code></td>
+            <td>&mdash;</td>
+            <td><code>Number</code></td>
+            <td>&mdash;</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$height</code></td>
+            <td>&mdash;</td>
+            <td><code>Number</code></td>
+            <td>&mdash;</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$top</code></td>
+            <td>&mdash;</td>
+            <td><code>Number</code></td>
+            <td>&mdash;</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$right</code></td>
+            <td>&mdash;</td>
+            <td><code>Number</code></td>
+            <td>&mdash;</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$bottom</code></td>
+            <td>&mdash;</td>
+            <td><code>Number</code></td>
+            <td>&mdash;</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$left</code></td>
+            <td>&mdash;</td>
+            <td><code>Number</code></td>
+            <td>&mdash;</td>
+          </tr>
+        
+      </tbody>
+    </table>
+    
+
+    
+
+    
+
+    
+
+    
+      <h3>Requires</h3>
+      
+        <ul class="sassdoc__item-usedby">
+        <li><a href="#mixin-icon-generated"><code>icon-generated</code></a></li>
+        </ul>
+      
+    
+
+    
+
+    
+
+    
+
+  
+
+</section>
+    
+      
+      <section class="sassdoc__item  " id="mixin-hidpi-mq">
+  <h2 class="sassdoc__item-name">
+    
+    <code>hidpi-mq</code>
+
+    
+
+    
+  </h2>
+
+  
+
+    
+    
+    <pre class="sassdoc__item-code">@mixin hidpi-mq () { ... }  </pre>
+
+    
+      <h3>Description</h3>
+      <p class="sassdoc__item-description"><p>Hidpi media query builder.</p></p>
+    
+
+    
+
+    
+
+    <h3>Parameters</h3>
+    
+      <p>None.</p>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  
+
+</section>
+    
+      
+      <section class="sassdoc__item  " id="mixin-icon">
+  <h2 class="sassdoc__item-name">
+    
+    <code>icon</code>
+
+    
+
+    
+  </h2>
+
+  
+
+    
+    
+      
+
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+        
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+        
+      
+
+      
+
+      
+        
+      
+    
+    <pre class="sassdoc__item-code">@mixin icon ($map, $sprite, $offset: 0 0, $format: conf.format) { ... }  </pre>
+
+    
+      <h3>Description</h3>
+      <p class="sassdoc__item-description"><p>Main icon mixin,&lt;br /&gt;default choice until specific needs.</p></p>
+    
+
+    
+
+    
+
+    <h3>Parameters</h3>
+    
+    <table class="sassdoc__item-parameters">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Default value</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$map</code></td>
+            <td>spritemap name</td>
+            <td><code>String</code></td>
+            <td>&mdash;</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$sprite</code></td>
+            <td>sprite name</td>
+            <td><code>String</code></td>
+            <td>&mdash;</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$offset</code></td>
+            <td>adjustment along the x y axis</td>
+            <td><code>List</code></td>
+            <td>0 0</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$format</code></td>
+            <td>file format &#39;svg&#39; | &#39;png&#39;</td>
+            <td><code>String</code></td>
+            <td>conf.format</td>
+          </tr>
+        
+      </tbody>
+    </table>
+    
+
+    
+
+    
+
+    
+      <h3>Requires</h3>
+      
+        <ul class="sassdoc__item-requires">
+        <li><a href="#function-conf"><code>conf</code></a></li>
+        
+      
+        
+        <li><a href="#function-_sprite-map-get"><code>_sprite-map-get</code></a></li>
+        
+      
+        
+        <li><a href="#function-_join"><code>_join</code></a></li>
+        
+      
+        
+        <li><a href="#function-_sprite-position"><code>_sprite-position</code></a></li>
+        </ul>
+      
+    
+
+    
+      <h3>Requires</h3>
+      
+        <ul class="sassdoc__item-usedby">
+        <li><a href="#mixin-icon-generated"><code>icon-generated</code></a></li>
+        </ul>
+      
+    
+
+    
+
+    
+
+    
+
+  
+
+</section>
+    
+      
+      <section class="sassdoc__item  " id="mixin-icon-generated">
+  <h2 class="sassdoc__item-name">
+    
+    <code>icon-generated</code>
+
+    
+
+    
+  </h2>
+
+  
+
+    
+    
+      
+
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+        
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+        
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+        
+      
+
+      
+
+      
+        
+      
+    
+    <pre class="sassdoc__item-code">@mixin icon-generated ($map, $sprite, $pos: &#39;before&#39;, $centered: false) - whether to center the icon (relative to its parent, $format: conf.format) { ... }  </pre>
+
+    
+      <h3>Description</h3>
+      <p class="sassdoc__item-description"><p>Include the icon in a generated pseudo-element.&lt;br /&gt;Default to <code>:before</code>.
+Allows for easier positioning or centering.</p></p>
+    
+
+    
+
+    
+
+    <h3>Parameters</h3>
+    
+    <table class="sassdoc__item-parameters">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Default value</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$map</code></td>
+            <td>spritemap name</td>
+            <td><code>String</code></td>
+            <td>&mdash;</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$sprite</code></td>
+            <td>sprite name</td>
+            <td><code>String</code></td>
+            <td>&mdash;</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$pos</code></td>
+            <td>pseudo-element position</td>
+            <td><code>String</code></td>
+            <td>&#39;before&#39;</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$centered</code></td>
+            <td>&mdash;</td>
+            <td><code>Bool</code></td>
+            <td>false) - whether to center the icon (relative to its parent</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$format</code></td>
+            <td>file format &#39;svg&#39; | &#39;png&#39;</td>
+            <td><code>String</code></td>
+            <td>conf.format</td>
+          </tr>
+        
+      </tbody>
+    </table>
+    
+
+    
+
+    
+
+    
+      <h3>Requires</h3>
+      
+        <ul class="sassdoc__item-requires">
+        <li><a href="#function-conf"><code>conf</code></a></li>
+        
+      
+        
+        <li><a href="#function-_sprite-map-get"><code>_sprite-map-get</code></a></li>
+        
+      
+        
+        <li><a href="#mixin-generated"><code>generated</code></a></li>
+        
+      
+        
+        <li><a href="#mixin-icon"><code>icon</code></a></li>
+        </ul>
+      
+    
+
+    
+
+    
+
+    
+
+    
+
+  
+
+</section>
+    
+      
+      <section class="sassdoc__item  " id="mixin-icon-single">
+  <h2 class="sassdoc__item-name">
+    
+    <code>icon-single</code>
+
+    
+
+    
+  </h2>
+
+  
+
+    
+    
+      
+
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+        
+      
+
+      
+
+      
+        
+      
+    
+    <pre class="sassdoc__item-code">@mixin icon-single ($map, $sprite, $format: conf.format) { ... }  </pre>
+
+    
+      <h3>Description</h3>
+      <p class="sassdoc__item-description"><p>Embed a single icon as inline-image (no spritemap).&lt;br /&gt;Should be used sporadically.</p></p>
+    
+
+    
+
+    
+
+    <h3>Parameters</h3>
+    
+    <table class="sassdoc__item-parameters">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Default value</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$map</code></td>
+            <td>spritemap name</td>
+            <td><code>String</code></td>
+            <td>&mdash;</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$sprite</code></td>
+            <td>sprite name</td>
+            <td><code>String</code></td>
+            <td>&mdash;</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$format</code></td>
+            <td>file format &#39;svg&#39; | &#39;png&#39;</td>
+            <td><code>String</code></td>
+            <td>conf.format</td>
+          </tr>
+        
+      </tbody>
+    </table>
+    
+
+    
+
+    
+
+    
+      <h3>Requires</h3>
+      
+        <ul class="sassdoc__item-requires">
+        <li><a href="#function-conf"><code>conf</code></a></li>
+        
+      
+        
+        <li><a href="#function-_join"><code>_join</code></a></li>
+        </ul>
+      
+    
+
+    
+
+    
+
+    
+
+    
+
+  
+
+</section>
+    
+      
+      <section class="sassdoc__item  " id="mixin-sprite-map-create">
+  <h2 class="sassdoc__item-name">
+    
+    <code>sprite-map-create</code>
+
+    
+
+    
+  </h2>
+
+  
+
+    
+    
+      
+
+      
+
+      
+
+      
+        
+      
+    
+      
+
+      
+        
+      
+
+      
+
+      
+        
+      
+    
+    <pre class="sassdoc__item-code">@mixin sprite-map-create ($name, $spacing: conf.spacing) { ... }  </pre>
+
+    
+      <h3>Description</h3>
+      <p class="sassdoc__item-description"><p>Create a new spritemap from folder.</p></p>
+    
+
+    
+
+    
+
+    <h3>Parameters</h3>
+    
+    <table class="sassdoc__item-parameters">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Default value</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$name</code></td>
+            <td>spritemap name, which is also the folder name</td>
+            <td><code>String</code></td>
+            <td>&mdash;</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$spacing</code></td>
+            <td>Whether to add space around sprites in generated spritemap</td>
+            <td><code>Number</code></td>
+            <td>conf.spacing</td>
+          </tr>
+        
+      </tbody>
+    </table>
+    
+
+    
+
+    
+
+    
+      <h3>Requires</h3>
+      
+        <ul class="sassdoc__item-requires">
+        <li><a href="#function-conf"><code>conf</code></a></li>
+        
+      
+        
+        <li><a href="#function-_join"><code>_join</code></a></li>
+        </ul>
+      
+    
+
+    
+
+    
+
+    
+
+    
+
+  
+
+</section>
+    
+  
+    <h1 class="sassdoc__section" id="variables">Variables</h1>
+    
+      
+      <section class="sassdoc__item" id="variable-icons-settings">
+
+  <h2 class="sassdoc__item-name">
+    <span class="sassdoc__item-type">[variable]</span>
+    <code>$icons-settings</code>
+  </h2>
+
+  <pre class="sassdoc__item-code">$icons-settings: () !default;</pre>
+
+  
+    <h3>Description</h3>
+    <p class="sassdoc__item-description"><p>User settings.</p></p>
+  
+
+  
+    <h3>Type</h3>
+    <p><code>Map</code></p>
+  
+
+  
+    <h3>Value</h3>
+    <p class="sassdoc__item-value"><code>() !default</code></p>
+  
+
+  
+    <h3>Access</h3>
+    <p class="sassdoc__item-access">private</p>
+  
+
+</section>
+    
+      
+      <section class="sassdoc__item" id="variable-icons-spritemaps">
+
+  <h2 class="sassdoc__item-name">
+    <span class="sassdoc__item-type">[variable]</span>
+    <code>$icons-spritemaps</code>
+  </h2>
+
+  <pre class="sassdoc__item-code">$icons-spritemaps: ();</pre>
+
+  
+    <h3>Description</h3>
+    <p class="sassdoc__item-description"><p>Spritemaps storage.</p></p>
+  
+
+  
+    <h3>Type</h3>
+    <p><code>Map</code></p>
+  
+
+  
+    <h3>Value</h3>
+    <p class="sassdoc__item-value"><code>()</code></p>
+  
+
+  
+    <h3>Access</h3>
+    <p class="sassdoc__item-access">private</p>
+  
+
+</section>
+    
+  
+
+      </article>
+
+    </div>
+  </div>
+</body>
+</html>

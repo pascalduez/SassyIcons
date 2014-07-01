@@ -3,26 +3,27 @@
 // ----------------
 
 
-// Main icon mixin.
+// Main icon mixin,
+// default choice until specific needs.
 // ---
 // @requires conf
 // @requires _sprite-map-get
 // @requires _join
 // @requires _sprite-position
 // ---
-// @param {string} $name
-// @param {string} $sprite
-// @param {list}   $offset
-// @param {string} $format
+// @param {String} $map - spritemap name
+// @param {String} $sprite - sprite name
+// @param {List}   $offset (0 0) - adjustment along the x y axis
+// @param {String} $format (conf.format) - file format 'svg' | 'png'
 
 @mixin icon(
-  $name,
+  $map,
   $sprite,
   $offset: 0 0,
   $format: conf(format)
 ) {
-  $map-1x: _sprite-map-get($name);
-  $map-2x: _sprite-map-get($name, 2x);
+  $map-1x: _sprite-map-get($map);
+  $map-2x: _sprite-map-get($map, 2x);
 
   // Shorter mixin calls.
   $offset-x: nth($offset, 1);
@@ -35,7 +36,7 @@
 
   @if $format == 'svg' {
 
-    $svg-file: _join((conf(dir), $name, '#{$sprite}.svg'), '/');
+    $svg-file: _join((conf(dir), $map, '#{$sprite}.svg'), '/');
 
     background: {
       image: inline-image($svg-file);
@@ -50,7 +51,7 @@
       .no-svg &,
       .no-js & {
 
-        @extend %sprite-map-#{$name}-image-map;
+        @extend %sprite-map-#{$map}-image-map;
 
         background-position: _sprite-position($map-1x, $sprite, $offset-x, $offset-y);
       }
@@ -59,11 +60,11 @@
   }
   @else if $format == 'png' {
 
-    @extend %sprite-map-#{$name}-image-map;
+    @extend %sprite-map-#{$map}-image-map;
 
     background-position: _sprite-position($map-1x, $sprite, $offset-x, $offset-y);
 
-    @extend %sprite-map-#{$name}-2x-image-map;
+    @extend %sprite-map-#{$map}-2x-image-map;
 
     @include hidpi-mq {
       background-position: _sprite-position($map-2x, $sprite, $offset-x, $offset-y, conf(hidpi-scale));

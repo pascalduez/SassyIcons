@@ -3,16 +3,21 @@
 // -------------------
 
 
-// Join `$list` into a string.
+// Helper: join `$list` into a string.
 // ---
-// @param {list} $list
-// @param {string} $glue
+// @access private
 // ---
-// @return {string}
+// @param {List}   $list      - the list to convert
+// @param {String} $glue ('') - a string to separate each element of the list
+// ---
+// @return {String}
 
-@function _join($list, $glue: '') {
-  $result: '';
+@function _join(
+  $list,
+  $glue: ''
+) {
   $length: length($list);
+  $result: '';
 
   @if $length < 1 {
     @return $result;
@@ -28,14 +33,14 @@
 }
 
 
-// Helper: retreive a spritemap.
+// Helper: retrieve a spritemap.
 // ---
 // @access private
 // ---
-// @param {string} $name
-// @param {string} $factor (1x)
+// @param {String} $name        - spritemap name
+// @param {String} $factor (1x) - dpi factor
 // ---
-// @return {spritemap}
+// @return {Spritemap}
 
 @function _sprite-map-get(
   $name,
@@ -49,13 +54,13 @@
 // ---
 // @access private
 // ---
-// @param {spritemap} $map
-// @param {string} $sprite
-// @param {number} $offset-x (0)
-// @param {number} $offset-y (0)
-// @param {number} $scale    (1)
+// @param {Spritemap} $map          - spritemap name
+// @param {String}    $sprite       - sprite name
+// @param {Number}    $offset-x (0) - adjustment along the x axis
+// @param {Number}    $offset-y (0) - adjustment along the y axis
+// @param {Number}    $scale    (1) - spritemap scale
 // ---
-// @return {list}
+// @return {List} (x-pos y-pos)
 
 @function _sprite-position(
   $map,
@@ -75,7 +80,7 @@
 // @link http://brettjankord.com/2012/11/28/cross-browser-retinahigh-resolution-media-queries
 // @link http://w3.org/blog/CSS/2012/06/14/unprefix-webkit-device-pixel-ratio
 
-@mixin hidpi-mq() {
+@mixin hidpi-mq {
   $hidpi-ratio: conf(hidpi-ratio);
 
   @media (-webkit-min-device-pixel-ratio: $hidpi-ratio),
