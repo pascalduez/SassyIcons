@@ -1,23 +1,23 @@
 
-"use strict";
+'use strict';
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
   // Load all grunt tasks matching the `grunt-*` pattern.
-  require("load-grunt-tasks")(grunt);
+  require('load-grunt-tasks')(grunt);
 
   // Time how long tasks take.
-  require("time-grunt")(grunt);
+  require('time-grunt')(grunt);
 
   var config = {
-    base: "test",
-    scss: "test/sass",
-    css: "test/css",
-    img: "test/img",
-    icons: "test/img/icons",
-    sprites: "test/img/sprites",
-    src: "stylesheets",
-    dist: "dist"
+    base: 'test',
+    scss: 'test/sass',
+    css: 'test/css',
+    img: 'test/img',
+    icons: 'test/img/icons',
+    sprites: 'test/img/sprites',
+    src: 'stylesheets',
+    dist: 'dist'
   }
 
   var banner = [
@@ -27,9 +27,11 @@ module.exports = function(grunt) {
     '// License: <%= pkg.license.type %>\n\n'
   ].join('');
 
+  var pkg = grunt.file.readJSON('package.json');
+
   grunt.initConfig({
 
-    pkg: grunt.file.readJSON("package.json"),
+    pkg: pkg,
 
     conf: config,
 
@@ -51,20 +53,20 @@ module.exports = function(grunt) {
 
     watch: {
       test: {
-        files: ["<%= conf.scss %>/*.scss"],
-        tasks: ["shell:compass:src"]
+        files: ['<%= conf.scss %>/*.scss'],
+        tasks: ['shell:compass:src']
       }
     },
 
     browserSync: {
       test: {
         bsFiles: {
-          src: "<%= conf.css %>/*.css"
+          src: '<%= conf.css %>/*.css'
         },
         options: {
           watchTask: true,
           server: {
-            baseDir: "<%= conf.base %>"
+            baseDir: '<%= conf.base %>'
           }
         }
       }
@@ -72,14 +74,14 @@ module.exports = function(grunt) {
 
     autoprefixer: {
       options: {
-        browsers: ["last 2 version", "> 1%", "ie 8"]
+        browsers: ['last 2 version', '> 1%', 'ie 8']
       },
       dist: {
         files: [{
           expand: true,
-          cwd: "<%= conf.css %>",
-          src: "{,*/}*.css",
-          dest: "<%= conf.css %>"
+          cwd: '<%= conf.css %>',
+        src: '{,*/}*.css',
+          dest: '<%= conf.css %>'
         }]
       }
     },
@@ -93,9 +95,9 @@ module.exports = function(grunt) {
       icons: {
         files: [{
           expand: true,
-          cwd: "<%= conf.icons %>",
-          src: ["**/*.svg"],
-          dest: "<%= conf.icons %>"
+          cwd: '<%= conf.icons %>',
+          src: ['**/*.svg'],
+          dest: '<%= conf.icons %>'
         }]
       }
     },
@@ -103,24 +105,24 @@ module.exports = function(grunt) {
     svg2png: {
       fallback: {
         options: {
-          subdir: "png"
+          subdir: 'png'
         },
         files: [{
           expand: true,
-          cwd: "<%= conf.icons %>",
-          src: ["**/*.svg"],
-          dest: "<%= conf.icons %>"
+          cwd: '<%= conf.icons %>',
+          src: ['**/*.svg'],
+          dest: '<%= conf.icons %>'
         }]
       },
       retina: {
         options: {
           scale: 2.0,
-          subdir: "png_2x",
+          subdir: 'png_2x',
         },
         files: [{
           expand: true,
-          cwd: "<%= conf.icons %>",
-          src: ["**/*.svg"],
+          cwd: '<%= conf.icons %>',
+          src: ['**/*.svg'],
           dest: "<%= conf.icons %>"
         }]
       }
@@ -210,43 +212,65 @@ module.exports = function(grunt) {
 
   });
 
-  grunt.registerTask("www", [
-    "copy:www",
-    "gh-pages",
-    "clean:www"
+  grunt.registerTask('www', [
+    'copy:www',
+    'gh-pages',
+    'clean:www'
   ]);
 
-  grunt.registerTask("test", [
-    "browserSync:test",
-    "watch:test"
+  grunt.registerTask('test', [
+    'browserSync:test',
+    'watch:test'
   ]);
 
-  grunt.registerTask("dist", [
-    "concat:dist",
-    "shell:compass:dist"
+  grunt.registerTask('dist', [
+    'concat:dist',
+    'shell:compass:dist'
   ]);
 
-  grunt.registerTask("release", [
-    "bump-only",
-    "dist",
-    "bump-commit"
+  grunt.registerTask('release', [
+    'bump-only',
+    'dist',
+    'bump-commit'
   ]);
 
-  grunt.registerTask("icons_refresh", [
-    "clean:icons",
-    "svgmin:icons",
-    "svg2png:fallback",
-    "svg2png:retina"
+  grunt.registerTask('icons_refresh', [
+    'clean:icons',
+    'svgmin:icons',
+    'svg2png:fallback',
+    'svg2png:retina'
   ]);
 
-  grunt.registerTask("icons", [
-    "newer:svgmin:icons",
-    "newer:svg2png:fallback",
-    "newer:svg2png:retina"
+  grunt.registerTask('icons', [
+    'newer:svgmin:icons',
+    'newer:svg2png:fallback',
+    'newer:svg2png:retina'
   ]);
 
-  grunt.registerTask("prefix", [
-    "autoprefixer"
+  grunt.registerTask('prefix', [
+    'autoprefixer'
   ]);
+
+  grunt.registerTask('docs', 'Generates documentation', function () {
+    var done = this.async();
+    var options = JSON.stringify({
+      title: pkg.title
+    });
+
+    grunt.file.write('view.json', options);
+
+    grunt.util.spawn({
+      cmd: 'node_modules/.bin/sassdoc',
+      args: ['stylesheets', 'docs', '-c', 'view.json']
+    },
+    function (error, result, code) {
+      if (error) grunt.log.error(error);
+      if (result) grunt.log.writeln(result);
+
+      grunt.file.delete('view.json');
+      done();
+    });
+
+  });
 
 };
