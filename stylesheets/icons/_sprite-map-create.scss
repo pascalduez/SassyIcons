@@ -3,21 +3,25 @@
 // -----------------------------
 
 
-// @var {Map} - Spritemaps storage.
-// ---
-// @access private
-
+/**
+ * Spritemaps storage.
+ * ---
+ * @access private
+ * ---
+ * @datatype Map
+ */
 $icons-spritemaps: ();
 
 
-// Create a new spritemap from folder.
-// ---
-// @requires conf
-// @requires _join
-// ---
-// @param {String} $name - spritemap name, which is also the folder name
-// @param {Number} $spacing (conf.spacing) - Whether to add space around sprites in generated spritemap
-
+/**
+ * Create a new spritemap from folder.
+ * ---
+ * @requires conf
+ * @requires _join
+ * ---
+ * @param {String} $name - spritemap name, which is also the folder name
+ * @param {Number} $spacing (conf.spacing) - Whether to add space around sprites in generated spritemap
+ */
 @mixin sprite-map-create(
   $name,
   $spacing: conf(spacing)

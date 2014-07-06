@@ -208,11 +208,24 @@ module.exports = function (grunt) {
         push: true
       },
       src: ['**']
+    },
+
+    sassdoc: {
+      default: {
+        src: 'stylesheets',
+        dest: 'docs',
+        options: {
+          title: pkg.title,
+          display_access: ['public'],
+          display_alias: true
+        }
+      }
     }
 
   });
 
   grunt.registerTask('www', [
+    'sassdoc'
     'copy:www',
     'gh-pages',
     'clean:www'
@@ -250,27 +263,5 @@ module.exports = function (grunt) {
   grunt.registerTask('prefix', [
     'autoprefixer'
   ]);
-
-  grunt.registerTask('docs', 'Generates documentation', function () {
-    var done = this.async();
-    var options = JSON.stringify({
-      title: pkg.title
-    });
-
-    grunt.file.write('view.json', options);
-
-    grunt.util.spawn({
-      cmd: 'node_modules/.bin/sassdoc',
-      args: ['stylesheets', 'docs', '-c', 'view.json']
-    },
-    function (error, result, code) {
-      if (error) grunt.log.error(error);
-      if (result) grunt.log.writeln(result);
-
-      grunt.file.delete('view.json');
-      done();
-    });
-
-  });
 
 };

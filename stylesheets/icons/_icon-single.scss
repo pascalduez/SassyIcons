@@ -3,16 +3,17 @@
 // -----------------------
 
 
-// Embed a single icon as inline-image (no spritemap).
-// Should be used sporadically.
-// ---
-// @requires conf
-// @requires _join
-// ---
-// @param {String} $map - spritemap name
-// @param {String} $sprite - sprite name
-// @param {String} $format (conf.format) - file format 'svg' | 'png'
-
+/**
+ * Embed a single icon as inline-image (no spritemap).
+ * Should be used sporadically.
+ * ---
+ * @requires conf
+ * @requires _join
+ * ---
+ * @param {String} $map - spritemap name
+ * @param {String} $sprite - sprite name
+ * @param {String} $format (conf.format) - file format 'svg' | 'png'
+ */
 @mixin icon-single(
   $map,
   $sprite,

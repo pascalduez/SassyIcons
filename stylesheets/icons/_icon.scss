@@ -3,19 +3,20 @@
 // ----------------
 
 
-// Main icon mixin,
-// default choice unless there are specific needs.
-// ---
-// @requires conf
-// @requires _sprite-map-get
-// @requires _join
-// @requires _sprite-position
-// ---
-// @param {String} $map - spritemap name
-// @param {String} $sprite - sprite name
-// @param {List}   $offset (0 0) - adjustment along the x y axis
-// @param {String} $format (conf.format) - file format 'svg' | 'png'
-
+/**
+ * Main icon mixin,
+ * default choice unless there are specific needs.
+ * ---
+ * @requires conf
+ * @requires _sprite-map-get
+ * @requires _join
+ * @requires _sprite-position
+ * ---
+ * @param {String} $map - spritemap name
+ * @param {String} $sprite - sprite name
+ * @param {List}   $offset (0 0) - adjustment along the x y axis
+ * @param {String} $format (conf.format) - file format 'svg' | 'png'
+ */
 @mixin icon(
   $map,
   $sprite,

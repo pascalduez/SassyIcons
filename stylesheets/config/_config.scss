@@ -3,8 +3,11 @@
 // -------------------------
 
 
-// @var {Map} - Default settings.
-
+/**
+ * Default settings.
+ * ---
+ * @datatype Map
+ */
 $icons-defaults: (
 
   // Space around sprites in generated spritemap.
@@ -40,19 +43,23 @@ $icons-defaults: (
 );
 
 
-// @var {Map} - User settings.
-
+/**
+ * User settings.
+ * ---
+ * @datatype Map
+ */
 $icons-settings: () !default;
 
 
-// Retrieve a configuration item.
-// ---
-// @access private
-// ---
-// @param {String} $name - configuration item key
-// ---
-// @return {*}
-
+/**
+ * Retrieve a configuration item.
+ * ---
+ * @access private
+ * ---
+ * @param {String} $name - configuration item key
+ * ---
+ * @return {*}
+ */
 @function conf($key) {
   @if not map-has-key($icons-defaults, $key) {
     @warn "No item `#{$key}` found in configuration.";
