@@ -225,7 +225,7 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('www', [
-    'sassdoc'
+    'sassdoc',
     'copy:www',
     'gh-pages',
     'clean:www'
