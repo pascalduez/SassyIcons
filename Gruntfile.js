@@ -216,6 +216,7 @@ module.exports = function (grunt) {
         dest: 'docs',
         options: {
           title: pkg.title,
+          version: 'v' + pkg.version,
           display_access: ['public'],
           display_alias: true
         }

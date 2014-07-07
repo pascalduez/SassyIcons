@@ -10,8 +10,8 @@
  * ---
  * @requires conf
  * @requires _sprite-map-get
- * @requires generated
- * @requires icon
+ * @requires {mixin} generated
+ * @requires {mixin} icon
  * ---
  * @param {String} $map - spritemap name
  * @param {String} $sprite - sprite name
