@@ -12,7 +12,7 @@
  * ---
  * @param {String} $map - spritemap name
  * @param {String} $sprite - sprite name
- * @param {String} $format (conf.format) - file format 'svg' | 'png'
+ * @param {String} $format (conf(format)) - file format 'svg' | 'png'
  */
 @mixin icon-single(
   $map,

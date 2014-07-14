@@ -6,7 +6,7 @@
 /**
  * Default settings.
  * ---
- * @datatype Map
+ * @type Map
  */
 $icons-defaults: (
 
@@ -46,7 +46,7 @@ $icons-defaults: (
 /**
  * User settings.
  * ---
- * @datatype Map
+ * @type Map
  */
 $icons-settings: () !default;
 
@@ -56,7 +56,7 @@ $icons-settings: () !default;
  * ---
  * @access private
  * ---
- * @param {String} $name - configuration item key
+ * @param {String} $key - configuration item key
  * ---
  * @return {*}
  */

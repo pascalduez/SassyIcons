@@ -17,7 +17,7 @@
  * @param {String} $sprite - sprite name
  * @param {String} $pos ('before') - pseudo-element position
  * @param {Bool} $centered (false) - whether to center the icon, relative to its parent
- * @param {String} $format (conf.format) - file format 'svg' | 'png'
+ * @param {String} $format (conf(format)) - file format 'svg' | 'png'
  */
 @mixin icon-generated(
   $map,

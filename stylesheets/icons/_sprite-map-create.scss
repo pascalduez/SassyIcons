@@ -8,7 +8,7 @@
  * ---
  * @access private
  * ---
- * @datatype Map
+ * @type Map
  */
 $icons-spritemaps: ();
 
@@ -20,7 +20,7 @@ $icons-spritemaps: ();
  * @requires _join
  * ---
  * @param {String} $name - spritemap name, which is also the folder name
- * @param {Number} $spacing (conf.spacing) - Whether to add space around sprites in generated spritemap
+ * @param {Number} $spacing (conf(spacing)) - Whether to add space around sprites in generated spritemap
  */
 @mixin sprite-map-create(
   $name,

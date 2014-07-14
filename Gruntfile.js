@@ -215,10 +215,13 @@ module.exports = function (grunt) {
         src: 'stylesheets',
         dest: 'docs',
         options: {
-          title: pkg.title,
-          version: 'v' + pkg.version,
-          display_access: ['public'],
-          display_alias: true
+          verbose: true,
+          display: {
+            access: ['public'],
+            alias: false,
+            watermark: true
+          },
+          package: pkg
         }
       }
     }

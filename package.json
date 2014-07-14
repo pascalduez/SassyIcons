@@ -1,7 +1,7 @@
 {
   "name": "sassyicons",
   "title": "SassyIcons",
-  "version": "0.0.10",
+  "version": "0.1.0",
   "keywords": [
     "sass",
     "scss",
@@ -33,12 +33,11 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-gh-pages": "^0.9.1",
     "grunt-newer": "^0.7.0",
-    "grunt-sassdoc": "^0.1.5",
+    "grunt-sassdoc": "^0.4.0",
     "grunt-shell": "^0.7.0",
     "grunt-svg2png": "pascalduez/grunt-svg2png",
     "grunt-svgmin": "^0.4.0",
     "load-grunt-tasks": "^0.6.0",
-    "sassdoc": "^1.0.0-rc.8",
     "time-grunt": "^0.3.2"
   },
   "engines": {
@@ -49,8 +48,6 @@
     "url": "http://opensource.org/licenses/MIT"
   },
   "scripts": {
-    "install": "bundle install --path .",
-    "test": "grunt test",
-    "docs": "grunt docs"
+    "install": "bundle install --path ."
   }
 }
