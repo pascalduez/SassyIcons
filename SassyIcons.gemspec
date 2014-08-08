@@ -1,9 +1,9 @@
-require './lib/SassyIcons'
+# -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
   # Release Specific Information
-  s.version = SassyIcons::VERSION
-  s.date = SassyIcons::DATE
+  s.version = "0.1.0"
+  s.date = "2014-08-08"
 
   # Gem Details
   s.name = "SassyIcons"
@@ -12,6 +12,10 @@ Gem::Specification.new do |s|
   s.summary = %q{Flexible system to manipulate icons, SVG, PNG, sprites.}
   s.authors = ["Pascal Duez"]
   s.homepage = "http://github.com/pascalduez/SassyIcons"
+  s.license = "MIT"
+
+  # Files to Include
+  s.require_paths = ["lib"]
 
   # README file
   s.files = ["README.md"]
@@ -33,6 +37,6 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.6}
 
   # Gems Dependencies
-  s.add_dependency("sass",    [">= 3.3"])
-  s.add_dependency("compass", [">=1.0.0.alpha.19"])
+  s.add_dependency("sass", [">= 3.3"])
+  s.add_dependency("compass", [">=1.0.0.rc.1"])
 end

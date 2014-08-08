@@ -67,7 +67,7 @@ Override default values in a new `$icons-settings` map.
 ## Requirements
 
 * Sass ~> 3.3.0
-* Compass ~> 1.0.0.alpha.19
+* Compass ~> 1.0.0.rc.1
 
 
 ## Install
@@ -92,33 +92,22 @@ bower install SassyIcons --save
 
 #### Compass extension
 
-1. `bundle install SassyIcons` or `gem install SassyIcons`
-2. Add `require 'SassyIcons'` to your `config.rb`
-3. Import it in your stylesheets with `@import 'SassyIcons'`
+Since SassyIcons is dependant on Compass, this is the recommended installation and usage.
+
+1. Add `gem 'SassyIcons', '~>0.1.0'` to your `Gemfile`
+2. `bundle install --path .` (manage your gems in project dir, not globally)
+3. Add `require 'SassyIcons'` to your `config.rb`
+4. Import it in your stylesheets with `@import 'SassyIcons'`
 
 
 ## Usage
-
-*Provided that [path] = path to SassyIcons*
 
 #### Example usage with [Compass](http://compass-style.org/help/tutorials/command-line)
 ```css
 @import 'SassyIcons';
 ```
 ```
-bundle exec compass watch --import-path [path]/dist
-```
-
-#### Example config with [grunt-contrib-sass](https://github.com/gruntjs/grunt-contrib-sass)
-
-```js
-sass: {
-  options: {
-    bundleExec: true, // Optional usage of Bundler, but recommended.
-    compass: true,
-    loadPath: ['[path]/dist/_SassyIcons.scss']
-  }
-}
+bundle exec compass watch
 ```
 
 
