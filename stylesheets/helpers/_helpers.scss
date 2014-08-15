@@ -7,6 +7,7 @@
  * Helper: join `$list` into a string.
  * ---
  * @access private
+ * @group helpers
  * ---
  * @param {List} $list - the list to convert
  * @param {String} $glue ('') - a string to separate each element of the list
@@ -38,6 +39,7 @@
  * Helper: retrieve a spritemap.
  * ---
  * @access private
+ * @group helpers
  * ---
  * @param {String} $name - spritemap name
  * @param {String} $factor (1x) - dpi factor
@@ -56,6 +58,7 @@
  * Helper: return correct spritemap `background-position`.
  * ---
  * @access private
+ * @group helpers
  * ---
  * @param {Spritemap} $map - spritemap name
  * @param {String} $sprite - sprite name
@@ -81,6 +84,7 @@
  * Hidpi media query builder.
  * ---
  * @access private
+ * @group helpers
  * ---
  * @link http://bjango.com/articles/min-device-pixel-ratio/
  * @link http://brettjankord.com/2012/11/28/cross-browser-retinahigh-resolution-media-queries

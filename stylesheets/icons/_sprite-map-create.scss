@@ -7,8 +7,8 @@
  * Spritemaps storage.
  * ---
  * @access private
- * ---
  * @type Map
+ * @group icons
  */
 $icons-spritemaps: ();
 
@@ -16,11 +16,16 @@ $icons-spritemaps: ();
 /**
  * Create a new spritemap from folder.
  * ---
+ * @group icons
+ * ---
  * @requires conf
  * @requires _join
  * ---
  * @param {String} $name - spritemap name, which is also the folder name
  * @param {Number} $spacing (conf(spacing)) - Whether to add space around sprites in generated spritemap
+ * ---
+ * @example scss Instantiate a new sprite map
+ *   @include sprite-map-create(social, $spacing: 30px);
  */
 @mixin sprite-map-create(
   $name,

@@ -7,6 +7,7 @@
  * Default settings.
  * ---
  * @type Map
+ * @group config
  */
 $icons-defaults: (
 
@@ -45,8 +46,16 @@ $icons-defaults: (
 
 /**
  * User settings.
+ * Instanciate the same object in your stylesheets to override defaults.
  * ---
  * @type Map
+ * @group config
+ * ---
+ * @example scss Override defaults
+ *   $icons-settings: (
+ *     dir: "assets",
+ *     hidpi-scale: 3
+ *   );
  */
 $icons-settings: () !default;
 
@@ -55,6 +64,7 @@ $icons-settings: () !default;
  * Retrieve a configuration item.
  * ---
  * @access private
+ * @group config
  * ---
  * @param {String} $key - configuration item key
  * ---

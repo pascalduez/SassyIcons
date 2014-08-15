@@ -7,6 +7,8 @@
  * Main icon mixin,
  * default choice unless there are specific needs.
  * ---
+ * @group icons
+ * ---
  * @requires conf
  * @requires _sprite-map-get
  * @requires _join
@@ -14,8 +16,13 @@
  * ---
  * @param {String} $map - spritemap name
  * @param {String} $sprite - sprite name
- * @param {List}   $offset (0 0) - adjustment along the x y axis
+ * @param {List}   $offset ((0 0)) - adjustment along the x y axis
  * @param {String} $format (conf(format)) - file format 'svg' | 'png'
+ * ---
+ * @example scss Include an icon
+ *   .twitter {
+ *     @include icon(social, twitter);
+ *   }
  */
 @mixin icon(
   $map,

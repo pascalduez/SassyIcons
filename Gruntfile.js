@@ -221,7 +221,14 @@ module.exports = function (grunt) {
             alias: false,
             watermark: true
           },
-          package: pkg
+          groups: {
+            'undefined': 'General',
+            config: 'Configuration',
+            helpers: 'Helpers',
+            icons: 'Icons API'
+          },
+          package: pkg,
+          theme: 'default'
         }
       }
     }
