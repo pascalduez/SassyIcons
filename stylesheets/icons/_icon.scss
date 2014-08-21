@@ -13,6 +13,8 @@
  * @requires _sprite-map-get
  * @requires _join
  * @requires _sprite-position
+ * @requires Compass::inline-image
+ * @requires {mixin} hidpi-mq
  * ---
  * @param {String} $map - spritemap name
  * @param {String} $sprite - sprite name
@@ -23,6 +25,8 @@
  *   .twitter {
  *     @include icon(social, twitter);
  *   }
+ * ---
+ * @output Cross-browser icon as background-image
  */
 @mixin icon(
   $map,

@@ -11,10 +11,16 @@
  * ---
  * @requires conf
  * @requires _join
+ * @requires Compass::inline-image
+ * @requires Compass::inline-url
+ * @requires Compass::image-width
+ * @requires {mixin} hidpi-mq
  * ---
  * @param {String} $map - spritemap name
  * @param {String} $sprite - sprite name
  * @param {String} $format (conf(format)) - file format 'svg' | 'png'
+ * ---
+ * @output Cross-browser icon as background-image
  */
 @mixin icon-single(
   $map,

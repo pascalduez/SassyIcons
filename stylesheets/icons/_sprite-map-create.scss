@@ -20,6 +20,11 @@ $icons-spritemaps: ();
  * ---
  * @requires conf
  * @requires _join
+ * @requires {mixin} hidpi-mq
+ * @requires {variable} icons-spritemaps
+ * @requires Compass::sprite-map
+ * @requires Compass::sprite-path
+ * @requires Compass::image-width
  * ---
  * @param {String} $name - spritemap name, which is also the folder name
  * @param {Number} $spacing (conf(spacing)) - Whether to add space around sprites in generated spritemap

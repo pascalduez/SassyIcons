@@ -52,10 +52,10 @@ $icons-defaults: (
  * @group config
  * ---
  * @example scss Override defaults
- *   $icons-settings: (
- *     dir: "assets",
- *     hidpi-scale: 3
- *   );
+ * $icons-settings: (
+ *   dir: "assets",
+ *   hidpi-scale: 3
+ * );
  */
 $icons-settings: () !default;
 
@@ -65,6 +65,9 @@ $icons-settings: () !default;
  * ---
  * @access private
  * @group config
+ * ---
+ * @requires {variable} icons-defaults
+ * @requires {variable} icons-settings
  * ---
  * @param {String} $key - configuration item key
  * ---

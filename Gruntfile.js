@@ -227,6 +227,7 @@ module.exports = function (grunt) {
             helpers: 'Helpers',
             icons: 'Icons API'
           },
+          basePath: 'https://github.com/pascalduez/SassyIcons/tree/master/stylesheets',
           package: pkg,
           theme: 'default'
         }
