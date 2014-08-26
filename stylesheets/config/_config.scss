@@ -8,6 +8,16 @@
  * ---
  * @type Map
  * @group config
+ * ---
+ * @prop {Number} spacing (0) - Space around sprites in generated spritemap
+ * @prop {String} dir ('icons') - Main icons directory. `sprite-map-create()`, base for sub dirs
+ * @prop {String} dir-png ('png') - Name of the png sub-folders
+ * @prop {String} dir-hidpi ('png_2x') - Name of the hidpi png sub-folders
+ * @prop {Number} hidpi-scale (2) - Scale of the hidpi pngs
+ * @prop {Number} hidpi-ratio (1.3) - Minimum resolution ratio used in the hidpi media query
+ * @prop {Boolean} single-embed (true) - Whether to embed icons as data URI in the `icon-single()` mixin
+ * @prop {String} format ('svg') - Default file format unless overridden by parameter, svg | png
+ * @prop {Boolean} legacy (true) - Whether to support legacy browsers, svg fallback
  */
 $icons-defaults: (
 
