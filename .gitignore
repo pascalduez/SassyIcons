@@ -5,4 +5,4 @@
 .grunt
 node_modules
 Gemfile.lock
-ruby
+vendor/ruby

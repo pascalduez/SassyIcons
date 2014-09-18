@@ -48,8 +48,8 @@
     "url": "http://opensource.org/licenses/MIT"
   },
   "scripts": {
-    "bundle": "bundle install --path .",
+    "bundle": "bundle install --path vendor",
     "rebuild": "rm -r node_modules && npm install",
-    "install": "$npm_package_scripts_bundle"
+    "postinstall": "$npm_package_scripts_bundle"
   }
 }
