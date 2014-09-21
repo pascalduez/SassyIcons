@@ -4,10 +4,14 @@
 
 
 /**
+ * @group config
+ **/
+
+
+/**
  * Default settings.
  * ---
  * @type Map
- * @group config
  * ---
  * @prop {Number} spacing (0) - Space around sprites in generated spritemap
  * @prop {String} dir ('icons') - Main icons directory. `sprite-map-create()`, base for sub dirs
@@ -59,7 +63,6 @@ $icons-defaults: (
  * Instanciate the same object in your stylesheets to override defaults.
  * ---
  * @type Map
- * @group config
  * ---
  * @example scss Override defaults
  * $icons-settings: (
@@ -74,7 +77,6 @@ $icons-settings: () !default;
  * Retrieve a configuration item.
  * ---
  * @access private
- * @group config
  * ---
  * @requires {variable} icons-defaults
  * @requires {variable} icons-settings

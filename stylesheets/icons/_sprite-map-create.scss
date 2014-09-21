@@ -4,19 +4,21 @@
 
 
 /**
+ * @group icons
+ **/
+
+
+/**
  * Spritemaps storage.
  * ---
  * @access private
  * @type Map
- * @group icons
  */
 $icons-spritemaps: ();
 
 
 /**
  * Create a new spritemap from folder.
- * ---
- * @group icons
  * ---
  * @requires conf
  * @requires _join
