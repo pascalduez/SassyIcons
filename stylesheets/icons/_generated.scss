@@ -3,20 +3,19 @@
 // ---------------------
 
 
-/**
- * Boilerplate styles for generated content `:before` or `:after`.
- * ---
- * @access private
- * @group helpers
- * @todo Rewrite that crap
- * ---
- * @param {Number} $width
- * @param {Number} $height
- * @param {Number} $top
- * @param {Number} $right
- * @param {Number} $bottom
- * @param {Number} $left
- */
+/// Boilerplate styles for generated content `:before` or `:after`.
+///
+/// @access private
+/// @group helpers
+/// @todo Rewrite that crap
+///
+/// @param {Number} $width
+/// @param {Number} $height
+/// @param {Number} $top
+/// @param {Number} $right
+/// @param {Number} $bottom
+/// @param {Number} $left
+
 @mixin generated(
   $width: false,
   $height: false,

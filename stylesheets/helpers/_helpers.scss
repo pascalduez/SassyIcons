@@ -3,20 +3,19 @@
 // -------------------
 
 
-/**
- * @group helpers
- * @access private
- **/
+////
+//// @group helpers
+//// @access private
+////
 
 
-/**
- * Helper: join `$list` into a string.
- * ---
- * @param {List} $list - the list to convert
- * @param {String} $glue ('') - a string to separate each element of the list
- * ---
- * @return {String}
- */
+/// Helper: join `$list` into a string.
+///
+/// @param {List} $list - the list to convert
+/// @param {String} $glue ('') - a string to separate each element of the list
+///
+/// @return {String}
+
 @function _join(
   $list,
   $glue: ''
@@ -38,16 +37,15 @@
 }
 
 
-/**
- * Helper: retrieve a spritemap.
- * ---
- * @requires {variable} icons-spritemaps
- * ---
- * @param {String} $name - spritemap name
- * @param {String} $factor (1x) - dpi factor
- * ---
- * @return {Spritemap}
- */
+/// Helper: retrieve a spritemap.
+///
+/// @requires {variable} icons-spritemaps
+///
+/// @param {String} $name - spritemap name
+/// @param {String} $factor (1x) - dpi factor
+///
+/// @return {Spritemap}
+
 @function _sprite-map-get(
   $name,
   $factor: 1x
@@ -56,19 +54,18 @@
 }
 
 
-/**
- * Helper: return correct spritemap `background-position`.
- * ---
- * @requires Compass::sprite-position
- * ---
- * @param {Spritemap} $map - spritemap name
- * @param {String} $sprite - sprite name
- * @param {Number} $offset-x (0) - adjustment along the x axis
- * @param {Number} $offset-y (0) - adjustment along the y axis
- * @param {Number} $scale    (1) - spritemap scale
- * ---
- * @return {List} (x-pos y-pos)
- */
+/// Helper: return correct spritemap `background-position`.
+///
+/// @requires Compass::sprite-position
+///
+/// @param {Spritemap} $map - spritemap name
+/// @param {String} $sprite - sprite name
+/// @param {Number} $offset-x (0) - adjustment along the x axis
+/// @param {Number} $offset-y (0) - adjustment along the y axis
+/// @param {Number} $scale    (1) - spritemap scale
+///
+/// @return {List} (x-pos y-pos)
+
 @function _sprite-position(
   $map,
   $sprite,
@@ -81,13 +78,12 @@
 }
 
 
-/**
- * Hidpi media query builder.
- * ---
- * @link http://bjango.com/articles/min-device-pixel-ratio/
- * @link http://brettjankord.com/2012/11/28/cross-browser-retinahigh-resolution-media-queries
- * @link http://w3.org/blog/CSS/2012/06/14/unprefix-webkit-device-pixel-ratio
- */
+/// Hidpi media query builder.
+///
+/// @link http://bjango.com/articles/min-device-pixel-ratio/
+/// @link http://brettjankord.com/2012/11/28/cross-browser-retinahigh-resolution-media-queries
+/// @link http://w3.org/blog/CSS/2012/06/14/unprefix-webkit-device-pixel-ratio
+
 @mixin hidpi-mq {
   $hidpi-ratio: conf(hidpi-ratio);
 
