@@ -229,7 +229,10 @@ module.exports = function (grunt) {
           },
           basePath: 'https://github.com/pascalduez/SassyIcons/tree/master/stylesheets',
           package: pkg,
-          theme: 'default'
+          theme: 'default',
+          force: true,
+          interactive: false,
+          autofill: ['content', 'requires', 'throws']
         }
       }
     }
