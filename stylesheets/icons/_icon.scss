@@ -52,6 +52,7 @@
     background: {
       image: inline-image($svg-file);
       repeat: no-repeat;
+      position: $offset-x $offset-y;
     }
 
     .svg & {
