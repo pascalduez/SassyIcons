@@ -15,7 +15,7 @@ Also managing several "thematic" sprites a breeze.
 *Online [preview](http://pascalduez.github.io/SassyIcons/test) (test folder).*  
 *Online [Documentation](http://pascalduez.github.io/SassyIcons/docs) (generated with SassDoc).*
 
-## Mixins
+## API
 
 `sprite-map-create($name [, $spacing])`  
 `icon($map, $sprite [, $offset, $format])`  
@@ -23,7 +23,43 @@ Also managing several "thematic" sprites a breeze.
 `icon-generated($map, $sprite [, $pos, $centered, $format])`
 
 
-## Configuration
+## Usage
+
+### Requirements
+
+* Sass ~> 3.3.0
+* Compass ~> 1.0.0.rc.1
+
+### Installation
+
+#### Git
+
+```
+git clone git@github.com:pascalduez/SassyIcons.git
+```
+
+#### npm
+
+```
+npm install sassyicons --save
+```
+
+#### Bower
+
+```
+bower install SassyIcons --save
+```
+
+#### Compass extension
+
+Since SassyIcons is dependant on Compass, this is the recommended installation and usage.
+
+1. Add `gem 'SassyIcons', '~>0.1.0'` to your `Gemfile`
+2. `bundle install --path .` (manage your gems in project dir, not globally)
+3. Add `require 'SassyIcons'` to your `config.rb`
+4. Import it in your stylesheets with `@import 'SassyIcons'`
+
+### Configuration
 
 ```scss
 // Default settings.
@@ -64,47 +100,24 @@ $icons-defaults: (
 Override default values in a new `$icons-settings` map.
 
 
-## Requirements
-
-* Sass ~> 3.3.0
-* Compass ~> 1.0.0.rc.1
-
-
-## Install
-
-#### Git
-
-```
-git clone git@github.com:pascalduez/SassyIcons.git
-```
-
-#### npm
-
-```
-npm install sassyicons --save
-```
-
-#### Bower
-
-```
-bower install SassyIcons --save
-```
-
-#### Compass extension
-
-Since SassyIcons is dependant on Compass, this is the recommended installation and usage.
-
-1. Add `gem 'SassyIcons', '~>0.1.0'` to your `Gemfile`
-2. `bundle install --path .` (manage your gems in project dir, not globally)
-3. Add `require 'SassyIcons'` to your `config.rb`
-4. Import it in your stylesheets with `@import 'SassyIcons'`
-
-
 ## Usage
 
 #### Example usage with [Compass](http://compass-style.org/help/tutorials/command-line)
-```css
+```scss
+// Import SassyIcons.
 @import 'SassyIcons';
+
+// Instantiate a new sprite-map from folder `icons/social`.
+@include sprite-map-create(social, $spacing: 10px);
+
+.icon--twitter {
+  @include icon(social, "twitter");
+}
+
+.icon--twitter {
+  @include icon-generated(social, "twitter", $format: "png");
+}
+
 ```
 ```
 bundle exec compass watch
