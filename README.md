@@ -135,9 +135,24 @@ bundle exec compass watch
 * Support for SVG stacks ?
 * Try to further improve output CSS
 * More control over print position in the stylesheet ?
-* Abstract and move away from compass sprites ?
+* Abstract and move away from Compass sprites ?
 * Move away from Modernizr classes ? Or make it an option.
 * Clarify or remove the `@content` thing to pass additional rules to `.svg`.
+
+## Future
+
+This library used to address a specific need, at a specific moment. Although one
+of its main feature is to bring granular control on how many icons you want to
+inline, keep in mind that too many inlined SVG's, especially base64 encoded might
+be a concern for performances.
+
+There are a bunch of different techniques to integrate SVG icons, that you should
+check out and evaluate before deciding on any.
+
+Some (non exaustive) resources:
+* [Different ways of using icons ](https://github.com/betravis/icon-methods)
+* [An Overview of SVG Sprite Creation Techniques](http://24ways.org/2014/an-overview-of-svg-sprite-creation-techniques)
+* [Tips For Optimising SVG Delivery For The Web](http://calendar.perfplanet.com/2014/tips-for-optimising-svg-delivery-for-the-web)
 
 
 ## Development
