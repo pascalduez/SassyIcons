@@ -12,8 +12,7 @@ Also managing several "thematic" sprites a breeze.
 
 *Best workflow used in conjunction with [grunt-svg2png](https://github.com/pascalduez/grunt-svg2png).*
 
-*Online [preview](http://pascalduez.github.io/SassyIcons/test) (test folder).*  
-*Online [Documentation](http://pascalduez.github.io/SassyIcons/docs) (generated with SassDoc).*
+*Online [Documentation](http://pascalduez.github.io/SassyIcons) (generated with SassDoc).*
 
 ## API
 
