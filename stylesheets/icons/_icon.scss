@@ -17,8 +17,8 @@
 ///
 /// @param {String} $map - spritemap name
 /// @param {String} $sprite - sprite name
-/// @param {List}   $offset ((0 0)) - adjustment along the x y axis
-/// @param {String} $format (conf(format)) - file format 'svg' | 'png'
+/// @param {List}   $offset [(0 0)] - adjustment along the x y axis
+/// @param {String} $format [conf(format)] - file format 'svg' | 'png'
 ///
 /// @example scss Include an icon
 ///   .twitter {

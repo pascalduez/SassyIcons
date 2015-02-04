@@ -12,7 +12,7 @@
 /// Helper: join `$list` into a string.
 ///
 /// @param {List} $list - the list to convert
-/// @param {String} $glue ('') - a string to separate each element of the list
+/// @param {String} $glue [''] - a string to separate each element of the list
 ///
 /// @return {String}
 
@@ -42,7 +42,7 @@
 /// @requires {variable} icons-spritemaps
 ///
 /// @param {String} $name - spritemap name
-/// @param {String} $factor (1x) - dpi factor
+/// @param {String} $factor [1x] - dpi factor
 ///
 /// @return {Spritemap}
 
@@ -60,9 +60,9 @@
 ///
 /// @param {Spritemap} $map - spritemap name
 /// @param {String} $sprite - sprite name
-/// @param {Number} $offset-x (0) - adjustment along the x axis
-/// @param {Number} $offset-y (0) - adjustment along the y axis
-/// @param {Number} $scale    (1) - spritemap scale
+/// @param {Number} $offset-x [0] - adjustment along the x axis
+/// @param {Number} $offset-y [0] - adjustment along the y axis
+/// @param {Number} $scale    [1] - spritemap scale
 ///
 /// @return {List} (x-pos y-pos)
 
