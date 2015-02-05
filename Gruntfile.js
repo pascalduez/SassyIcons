@@ -213,8 +213,8 @@ module.exports = function (grunt) {
     sassdoc: {
       default: {
         src: 'stylesheets',
-        dest: 'docs',
         options: {
+          dest: 'docs',
           verbose: true,
           display: {
             access: ['public'],
