@@ -1,6 +1,11 @@
 # SassyIcons
 
-Flexible system to manipulate icons, SVG, PNG, sprites.  
+> Flexible system to manipulate icons, SVG, PNG, sprites.  
+
+
+NOTICE: This project is unmaintained and won't receive new features.  
+Spritesheets automation helpers should better be handled by PostCSS plugins.
+
 
 Works on top of compass sprite API.  
 It was designed to easily switch between SVG and PNG while working with icons as background-images.  
