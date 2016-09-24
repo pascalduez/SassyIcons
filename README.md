@@ -177,7 +177,7 @@ Some (non exaustive) resources:
 
 ## Authors
 
-[Pascal Duez](http://pascalduez.me)
+[Pascal Duez](https://github.com/pascalduez)
 
 
 ## Licence
