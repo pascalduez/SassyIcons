@@ -1,3 +1,5 @@
+<div align="center">⚠️ Archived project</div>
+
 # SassyIcons
 
 > Flexible system to manipulate icons, SVG, PNG, sprites.  
